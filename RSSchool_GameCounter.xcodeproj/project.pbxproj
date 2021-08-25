@@ -7,19 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6C02348926D6345300770FCB /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C02348826D6345300770FCB /* NavigationViewController.swift */; };
 		6C86E5E726D5AF1100B6E3E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C86E5E626D5AF1100B6E3E3 /* AppDelegate.swift */; };
 		6C86E5EB26D5AF1100B6E3E3 /* NewGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C86E5EA26D5AF1100B6E3E3 /* NewGameViewController.swift */; };
 		6C86E5F026D5AF1800B6E3E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C86E5EF26D5AF1800B6E3E3 /* Assets.xcassets */; };
 		6C86E5F326D5AF1800B6E3E3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C86E5F126D5AF1800B6E3E3 /* LaunchScreen.storyboard */; };
+		6CC5DCD926D6624A006CA8DF /* GameCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC5DCD826D6624A006CA8DF /* GameCounter.swift */; };
+		6CC5DCDB26D6645C006CA8DF /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC5DCDA26D6645C006CA8DF /* Player.swift */; };
+		6CC5DCDD26D67044006CA8DF /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6CC5DCDC26D67044006CA8DF /* Nunito-SemiBold.ttf */; };
+		6CC5DCDF26D670C0006CA8DF /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6CC5DCDE26D670C0006CA8DF /* Nunito-ExtraBold.ttf */; };
+		6CC5DCE426D6A1FB006CA8DF /* GameCounterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC5DCE326D6A1FB006CA8DF /* GameCounterCell.swift */; };
+		6CC5DCE626D6AE4B006CA8DF /* GameCounterCellButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC5DCE526D6AE4B006CA8DF /* GameCounterCellButton.swift */; };
+		6CC5DCEA26D6ED79006CA8DF /* StartGameButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC5DCE926D6ED79006CA8DF /* StartGameButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6C02348826D6345300770FCB /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
 		6C86E5E326D5AF1100B6E3E3 /* RSSchool_GameCounter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RSSchool_GameCounter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C86E5E626D5AF1100B6E3E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6C86E5EA26D5AF1100B6E3E3 /* NewGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGameViewController.swift; sourceTree = "<group>"; };
 		6C86E5EF26D5AF1800B6E3E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6C86E5F226D5AF1800B6E3E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6C86E5F426D5AF1800B6E3E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6CC5DCD826D6624A006CA8DF /* GameCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCounter.swift; sourceTree = "<group>"; };
+		6CC5DCDA26D6645C006CA8DF /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		6CC5DCDC26D67044006CA8DF /* Nunito-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-SemiBold.ttf"; sourceTree = "<group>"; };
+		6CC5DCDE26D670C0006CA8DF /* Nunito-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-ExtraBold.ttf"; sourceTree = "<group>"; };
+		6CC5DCE326D6A1FB006CA8DF /* GameCounterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCounterCell.swift; sourceTree = "<group>"; };
+		6CC5DCE526D6AE4B006CA8DF /* GameCounterCellButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCounterCellButton.swift; sourceTree = "<group>"; };
+		6CC5DCE926D6ED79006CA8DF /* StartGameButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGameButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,12 +69,28 @@
 			isa = PBXGroup;
 			children = (
 				6C86E5E626D5AF1100B6E3E3 /* AppDelegate.swift */,
-				6C86E5EA26D5AF1100B6E3E3 /* NewGameViewController.swift */,
+				6C02348826D6345300770FCB /* NavigationViewController.swift */,
 				6C86E5EF26D5AF1800B6E3E3 /* Assets.xcassets */,
 				6C86E5F126D5AF1800B6E3E3 /* LaunchScreen.storyboard */,
+				6CC5DCE026D670D4006CA8DF /* Fonts */,
 				6C86E5F426D5AF1800B6E3E3 /* Info.plist */,
+				6C86E5EA26D5AF1100B6E3E3 /* NewGameViewController.swift */,
+				6CC5DCD826D6624A006CA8DF /* GameCounter.swift */,
+				6CC5DCE326D6A1FB006CA8DF /* GameCounterCell.swift */,
+				6CC5DCE526D6AE4B006CA8DF /* GameCounterCellButton.swift */,
+				6CC5DCE926D6ED79006CA8DF /* StartGameButton.swift */,
+				6CC5DCDA26D6645C006CA8DF /* Player.swift */,
 			);
 			path = RSSchool_GameCounter;
+			sourceTree = "<group>";
+		};
+		6CC5DCE026D670D4006CA8DF /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				6CC5DCDC26D67044006CA8DF /* Nunito-SemiBold.ttf */,
+				6CC5DCDE26D670C0006CA8DF /* Nunito-ExtraBold.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -118,8 +150,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6CC5DCDD26D67044006CA8DF /* Nunito-SemiBold.ttf in Resources */,
 				6C86E5F326D5AF1800B6E3E3 /* LaunchScreen.storyboard in Resources */,
 				6C86E5F026D5AF1800B6E3E3 /* Assets.xcassets in Resources */,
+				6CC5DCDF26D670C0006CA8DF /* Nunito-ExtraBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,7 +164,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6CC5DCE426D6A1FB006CA8DF /* GameCounterCell.swift in Sources */,
+				6CC5DCE626D6AE4B006CA8DF /* GameCounterCellButton.swift in Sources */,
+				6C02348926D6345300770FCB /* NavigationViewController.swift in Sources */,
 				6C86E5EB26D5AF1100B6E3E3 /* NewGameViewController.swift in Sources */,
+				6CC5DCEA26D6ED79006CA8DF /* StartGameButton.swift in Sources */,
+				6CC5DCD926D6624A006CA8DF /* GameCounter.swift in Sources */,
+				6CC5DCDB26D6645C006CA8DF /* Player.swift in Sources */,
 				6C86E5E726D5AF1100B6E3E3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -13,7 +13,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let window = UIWindow.init(frame: UIScreen.main.bounds)
-        window.rootViewController = NewGameViewController()
+        let rootViewController = NavigationViewController.init(rootViewController: NewGameViewController())
+        
+        window.rootViewController = rootViewController
         self.window = window
         window.makeKeyAndVisible()
         
