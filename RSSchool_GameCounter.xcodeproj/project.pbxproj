@@ -49,6 +49,53 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6C11E67026D7893A006C57FF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6C11E67126D7896B006C57FF /* NewGameViews */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6C11E67126D7896B006C57FF /* NewGameViews */ = {
+			isa = PBXGroup;
+			children = (
+				6CC5DCE326D6A1FB006CA8DF /* GameCounterCell.swift */,
+				6CC5DCE526D6AE4B006CA8DF /* GameCounterCellButton.swift */,
+				6CC5DCE926D6ED79006CA8DF /* StartGameButton.swift */,
+			);
+			path = NewGameViews;
+			sourceTree = "<group>";
+		};
+		6C11E67226D78984006C57FF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6CC5DCD826D6624A006CA8DF /* GameCounter.swift */,
+				6CC5DCDA26D6645C006CA8DF /* Player.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6C11E67326D78990006C57FF /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6C02348826D6345300770FCB /* NavigationViewController.swift */,
+				6C86E5EA26D5AF1100B6E3E3 /* NewGameViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		6C11E67426D789AB006C57FF /* OtherFiles */ = {
+			isa = PBXGroup;
+			children = (
+				6C86E5E626D5AF1100B6E3E3 /* AppDelegate.swift */,
+				6C86E5EF26D5AF1800B6E3E3 /* Assets.xcassets */,
+				6C86E5F426D5AF1800B6E3E3 /* Info.plist */,
+				6C86E5F126D5AF1800B6E3E3 /* LaunchScreen.storyboard */,
+			);
+			path = OtherFiles;
+			sourceTree = "<group>";
+		};
 		6C86E5DA26D5AF1000B6E3E3 = {
 			isa = PBXGroup;
 			children = (
@@ -68,18 +115,11 @@
 		6C86E5E526D5AF1100B6E3E3 /* RSSchool_GameCounter */ = {
 			isa = PBXGroup;
 			children = (
-				6C86E5E626D5AF1100B6E3E3 /* AppDelegate.swift */,
-				6C02348826D6345300770FCB /* NavigationViewController.swift */,
-				6C86E5EF26D5AF1800B6E3E3 /* Assets.xcassets */,
-				6C86E5F126D5AF1800B6E3E3 /* LaunchScreen.storyboard */,
+				6C11E67426D789AB006C57FF /* OtherFiles */,
+				6C11E67326D78990006C57FF /* Controller */,
 				6CC5DCE026D670D4006CA8DF /* Fonts */,
-				6C86E5F426D5AF1800B6E3E3 /* Info.plist */,
-				6C86E5EA26D5AF1100B6E3E3 /* NewGameViewController.swift */,
-				6CC5DCD826D6624A006CA8DF /* GameCounter.swift */,
-				6CC5DCE326D6A1FB006CA8DF /* GameCounterCell.swift */,
-				6CC5DCE526D6AE4B006CA8DF /* GameCounterCellButton.swift */,
-				6CC5DCE926D6ED79006CA8DF /* StartGameButton.swift */,
-				6CC5DCDA26D6645C006CA8DF /* Player.swift */,
+				6C11E67226D78984006C57FF /* Model */,
+				6C11E67026D7893A006C57FF /* View */,
 			);
 			path = RSSchool_GameCounter;
 			sourceTree = "<group>";
@@ -312,7 +352,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H667QRM4K6;
-				INFOPLIST_FILE = RSSchool_GameCounter/Info.plist;
+				INFOPLIST_FILE = RSSchool_GameCounter/OtherFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -332,7 +372,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H667QRM4K6;
-				INFOPLIST_FILE = RSSchool_GameCounter/Info.plist;
+				INFOPLIST_FILE = RSSchool_GameCounter/OtherFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
