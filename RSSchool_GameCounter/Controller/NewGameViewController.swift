@@ -8,31 +8,31 @@
 import UIKit
 
 class NewGameViewController: UIViewController {
-    var gameCounter = GameCounter()
+    let gameCounter = GameCounter.shared
     let tableView = UITableView(frame: .zero, style: .grouped)
-    var startButton = StartGameButton.init()
+    let startButton = StartGameButton.init()
     let containerView = UIView()
-    
-    let barButtonCancel = UIBarButtonItem.init(title: "Cancel",
-                                               style: .plain,
-                                               target: self,
-                                               action: #selector(tapCancel))
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor.init(named: "MainBackgroundColor")
+        startButton.addGestureRecognizer(UITapGestureRecognizer(target: self,
+                                                                action: #selector(pushGameProcess)))
+        
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = UIColor.clear
         tableView.separatorColor = UIColor(red: 85/255, green: 85/255, blue: 85/255, alpha: 1)
         tableView.register(GameCounterCell.self, forCellReuseIdentifier: "player")
         
-        navigationItem.title = "Game Counter"
-        
-        view.backgroundColor = UIColor.init(named: "MainBackgroundColor")
+        if let navigationVC = navigationController as? NavigationViewController {
+            navigationVC.configureNewGameViewController(self)
+        } else {
+            createTabBarItemsForModal()
+        }
         
         addConsTable()
-        
     }
     
     override func loadView() {
@@ -43,21 +43,29 @@ class NewGameViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        guard let navigationVC = navigationController else { return }
-        if navigationVC.viewControllers.count > 1 {
-            navigationItem.leftBarButtonItem = barButtonCancel
-        }
-        
+        tableView.reloadData()
+       print(navigationController?.viewControllers.count)
     }
+    
     override func viewWillLayoutSubviews() {
-        startButton.addMask()
+        startButton.setupMaskedTitle()
     }
     
     @objc private func tapCancel() {
-        
+        //TODO:
     }
     
-    private func addConsTable(){
+    @objc private func pushGameProcess() {
+        print("t")
+        navigationController?.pushViewController(GameProcessViewController(),
+                                                 animated: true)
+    }
+    
+    private func createTabBarItemsForModal() {
+        //TODO:
+    }
+    
+    private func addConsTable() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         startButton.translatesAutoresizingMaskIntoConstraints = false
         containerView.translatesAutoresizingMaskIntoConstraints = false
@@ -92,6 +100,12 @@ extension NewGameViewController: UITableViewDelegate {
            return 60
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == gameCounter.players.count {
+            navigationController?.pushViewController(AddPlayerViewController(), animated: true)
+        }
+    }
 }
     
 
@@ -117,10 +131,23 @@ extension NewGameViewController: UITableViewDataSource {
             cell.title.text = "add players"
         } else {
             cell.title.text = gameCounter.players[indexPath.row].name
-            
+            cell.leftButton.addTarget(self, action: #selector(deletePlayer), for: .touchUpInside)
         }
+        cell.leftButton.tag = indexPath.row
         cell.backgroundColor = UIColor(red: 59/255, green:  59/255, blue:  59/255, alpha: 1)
+        cell.selectionStyle = .none
         return cell
     }
 }
 
+extension NewGameViewController {
+    @objc private func tapAddPlayer() {
+        navigationController?.pushViewController(AddPlayerViewController(), animated: true)
+    }
+    @objc private func deletePlayer(_ sender: UIButton) {
+        print("tap")
+        gameCounter.deletePlayer(with: sender.tag)
+        tableView.reloadData()
+    }
+    
+}

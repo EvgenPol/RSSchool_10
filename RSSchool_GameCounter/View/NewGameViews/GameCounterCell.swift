@@ -13,11 +13,6 @@ class GameCounterCell: UITableViewCell {
     var rightButton : UIButton?
     let title = UILabel()
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(false, animated: false)
-    }
-    
-    
     func configureCell(_ isFirstCell: Bool,_ isLastCell: Bool) {
         if isFirstCell { configureFirstCell() }
         isLastCell ? configureLastCell() : configureDefaultCell()
@@ -29,7 +24,7 @@ class GameCounterCell: UITableViewCell {
         let head = UILabel()
         head.text = "Players"
         head.textColor = UIColor(red: 235/255, green: 235/255, blue: 245/255, alpha: 0.6)
-        head.font = UIFont(name: "Nunito-SemiBold", size: 16)
+        head.font = UIFont.nunito600(16)
         head.translatesAutoresizingMaskIntoConstraints = false
         header = head
         addSubview(head)
@@ -41,7 +36,7 @@ class GameCounterCell: UITableViewCell {
         let rightButton = GameCounterCellButton().createRightButton()
         self.rightButton = rightButton
         title.textColor = .white
-        title.font = UIFont(name: "Nunito-ExtraBold", size: 20)
+        title.font = UIFont.nunito800(20)
         addSubview(leftButton)
         addSubview(rightButton)
         addSubview(title)
@@ -50,7 +45,7 @@ class GameCounterCell: UITableViewCell {
     private func configureLastCell() {
         leftButton = GameCounterCellButton().createLeftButton(type: .add)
         title.textColor = UIColor(red: 132/255, green: 184/255, blue: 173/255, alpha: 1)
-        title.font = UIFont(name: "Nunito-SemiBold", size: 16)
+        title.font = UIFont.nunito600(16)
         addSubview(leftButton)
         addSubview(title)
         roundCorners(corners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner], radius: 15)
@@ -77,7 +72,6 @@ class GameCounterCell: UITableViewCell {
             rightButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -15).isActive = true
             rightButton.centerYAnchor.constraint(equalTo: leftButton.centerYAnchor).isActive = true
         }
-        
         
     }
 }

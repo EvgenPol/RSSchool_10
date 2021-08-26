@@ -8,6 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		6C02348926D6345300770FCB /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C02348826D6345300770FCB /* NavigationViewController.swift */; };
+		6C11E67626D78B6F006C57FF /* AddPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11E67526D78B6F006C57FF /* AddPlayerViewController.swift */; };
+		6C11E67826D791DD006C57FF /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11E67726D791DD006C57FF /* Font.swift */; };
+		6C11E67A26D7F727006C57FF /* AttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11E67926D7F727006C57FF /* AttributedString.swift */; };
+		6C11E67C26D80322006C57FF /* GameProcessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11E67B26D80322006C57FF /* GameProcessViewController.swift */; };
+		6C11E67F26D81C92006C57FF /* BasisDice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11E67E26D81C92006C57FF /* BasisDice.swift */; };
+		6C11E68126D824EF006C57FF /* DiceOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11E68026D824EF006C57FF /* DiceOne.swift */; };
+		6C11E68326D82621006C57FF /* DiceTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11E68226D82621006C57FF /* DiceTwo.swift */; };
+		6C11E68526D828C5006C57FF /* DiceThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11E68426D828C5006C57FF /* DiceThree.swift */; };
+		6C11E68726D8299A006C57FF /* DiceFour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11E68626D8299A006C57FF /* DiceFour.swift */; };
+		6C11E68926D82A57006C57FF /* DiceFive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11E68826D82A57006C57FF /* DiceFive.swift */; };
+		6C11E68B26D82B09006C57FF /* DiceSix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11E68A26D82B09006C57FF /* DiceSix.swift */; };
+		6C11E68D26D83404006C57FF /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11E68C26D83404006C57FF /* TimerView.swift */; };
+		6C11E68F26D8490F006C57FF /* SFCompactText-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6C11E68E26D8490F006C57FF /* SFCompactText-Bold.otf */; };
 		6C86E5E726D5AF1100B6E3E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C86E5E626D5AF1100B6E3E3 /* AppDelegate.swift */; };
 		6C86E5EB26D5AF1100B6E3E3 /* NewGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C86E5EA26D5AF1100B6E3E3 /* NewGameViewController.swift */; };
 		6C86E5F026D5AF1800B6E3E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C86E5EF26D5AF1800B6E3E3 /* Assets.xcassets */; };
@@ -23,6 +36,19 @@
 
 /* Begin PBXFileReference section */
 		6C02348826D6345300770FCB /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
+		6C11E67526D78B6F006C57FF /* AddPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlayerViewController.swift; sourceTree = "<group>"; };
+		6C11E67726D791DD006C57FF /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		6C11E67926D7F727006C57FF /* AttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributedString.swift; sourceTree = "<group>"; };
+		6C11E67B26D80322006C57FF /* GameProcessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameProcessViewController.swift; sourceTree = "<group>"; };
+		6C11E67E26D81C92006C57FF /* BasisDice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasisDice.swift; sourceTree = "<group>"; };
+		6C11E68026D824EF006C57FF /* DiceOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceOne.swift; sourceTree = "<group>"; };
+		6C11E68226D82621006C57FF /* DiceTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceTwo.swift; sourceTree = "<group>"; };
+		6C11E68426D828C5006C57FF /* DiceThree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceThree.swift; sourceTree = "<group>"; };
+		6C11E68626D8299A006C57FF /* DiceFour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceFour.swift; sourceTree = "<group>"; };
+		6C11E68826D82A57006C57FF /* DiceFive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceFive.swift; sourceTree = "<group>"; };
+		6C11E68A26D82B09006C57FF /* DiceSix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceSix.swift; sourceTree = "<group>"; };
+		6C11E68C26D83404006C57FF /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		6C11E68E26D8490F006C57FF /* SFCompactText-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFCompactText-Bold.otf"; sourceTree = "<group>"; };
 		6C86E5E326D5AF1100B6E3E3 /* RSSchool_GameCounter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RSSchool_GameCounter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C86E5E626D5AF1100B6E3E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6C86E5EA26D5AF1100B6E3E3 /* NewGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGameViewController.swift; sourceTree = "<group>"; };
@@ -52,6 +78,10 @@
 		6C11E67026D7893A006C57FF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				6C11E67726D791DD006C57FF /* Font.swift */,
+				6C11E67926D7F727006C57FF /* AttributedString.swift */,
+				6C11E68C26D83404006C57FF /* TimerView.swift */,
+				6C11E67D26D81C4B006C57FF /* Dices */,
 				6C11E67126D7896B006C57FF /* NewGameViews */,
 			);
 			path = View;
@@ -81,6 +111,8 @@
 			children = (
 				6C02348826D6345300770FCB /* NavigationViewController.swift */,
 				6C86E5EA26D5AF1100B6E3E3 /* NewGameViewController.swift */,
+				6C11E67526D78B6F006C57FF /* AddPlayerViewController.swift */,
+				6C11E67B26D80322006C57FF /* GameProcessViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -88,12 +120,27 @@
 		6C11E67426D789AB006C57FF /* OtherFiles */ = {
 			isa = PBXGroup;
 			children = (
+				6CC5DCE026D670D4006CA8DF /* Fonts */,
 				6C86E5E626D5AF1100B6E3E3 /* AppDelegate.swift */,
 				6C86E5EF26D5AF1800B6E3E3 /* Assets.xcassets */,
 				6C86E5F426D5AF1800B6E3E3 /* Info.plist */,
 				6C86E5F126D5AF1800B6E3E3 /* LaunchScreen.storyboard */,
 			);
 			path = OtherFiles;
+			sourceTree = "<group>";
+		};
+		6C11E67D26D81C4B006C57FF /* Dices */ = {
+			isa = PBXGroup;
+			children = (
+				6C11E67E26D81C92006C57FF /* BasisDice.swift */,
+				6C11E68026D824EF006C57FF /* DiceOne.swift */,
+				6C11E68226D82621006C57FF /* DiceTwo.swift */,
+				6C11E68426D828C5006C57FF /* DiceThree.swift */,
+				6C11E68626D8299A006C57FF /* DiceFour.swift */,
+				6C11E68826D82A57006C57FF /* DiceFive.swift */,
+				6C11E68A26D82B09006C57FF /* DiceSix.swift */,
+			);
+			path = Dices;
 			sourceTree = "<group>";
 		};
 		6C86E5DA26D5AF1000B6E3E3 = {
@@ -116,10 +163,9 @@
 			isa = PBXGroup;
 			children = (
 				6C11E67426D789AB006C57FF /* OtherFiles */,
-				6C11E67326D78990006C57FF /* Controller */,
-				6CC5DCE026D670D4006CA8DF /* Fonts */,
 				6C11E67226D78984006C57FF /* Model */,
 				6C11E67026D7893A006C57FF /* View */,
+				6C11E67326D78990006C57FF /* Controller */,
 			);
 			path = RSSchool_GameCounter;
 			sourceTree = "<group>";
@@ -128,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				6CC5DCDC26D67044006CA8DF /* Nunito-SemiBold.ttf */,
+				6C11E68E26D8490F006C57FF /* SFCompactText-Bold.otf */,
 				6CC5DCDE26D670C0006CA8DF /* Nunito-ExtraBold.ttf */,
 			);
 			path = Fonts;
@@ -192,6 +239,7 @@
 			files = (
 				6CC5DCDD26D67044006CA8DF /* Nunito-SemiBold.ttf in Resources */,
 				6C86E5F326D5AF1800B6E3E3 /* LaunchScreen.storyboard in Resources */,
+				6C11E68F26D8490F006C57FF /* SFCompactText-Bold.otf in Resources */,
 				6C86E5F026D5AF1800B6E3E3 /* Assets.xcassets in Resources */,
 				6CC5DCDF26D670C0006CA8DF /* Nunito-ExtraBold.ttf in Resources */,
 			);
@@ -205,13 +253,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				6CC5DCE426D6A1FB006CA8DF /* GameCounterCell.swift in Sources */,
+				6C11E68726D8299A006C57FF /* DiceFour.swift in Sources */,
+				6C11E68126D824EF006C57FF /* DiceOne.swift in Sources */,
+				6C11E67A26D7F727006C57FF /* AttributedString.swift in Sources */,
 				6CC5DCE626D6AE4B006CA8DF /* GameCounterCellButton.swift in Sources */,
+				6C11E67826D791DD006C57FF /* Font.swift in Sources */,
+				6C11E68926D82A57006C57FF /* DiceFive.swift in Sources */,
 				6C02348926D6345300770FCB /* NavigationViewController.swift in Sources */,
 				6C86E5EB26D5AF1100B6E3E3 /* NewGameViewController.swift in Sources */,
+				6C11E68526D828C5006C57FF /* DiceThree.swift in Sources */,
+				6C11E68D26D83404006C57FF /* TimerView.swift in Sources */,
+				6C11E67F26D81C92006C57FF /* BasisDice.swift in Sources */,
+				6C11E67C26D80322006C57FF /* GameProcessViewController.swift in Sources */,
+				6C11E67626D78B6F006C57FF /* AddPlayerViewController.swift in Sources */,
 				6CC5DCEA26D6ED79006CA8DF /* StartGameButton.swift in Sources */,
 				6CC5DCD926D6624A006CA8DF /* GameCounter.swift in Sources */,
+				6C11E68B26D82B09006C57FF /* DiceSix.swift in Sources */,
 				6CC5DCDB26D6645C006CA8DF /* Player.swift in Sources */,
 				6C86E5E726D5AF1100B6E3E3 /* AppDelegate.swift in Sources */,
+				6C11E68326D82621006C57FF /* DiceTwo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
