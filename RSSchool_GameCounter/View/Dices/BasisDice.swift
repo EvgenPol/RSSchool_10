@@ -8,7 +8,7 @@
 import UIKit
 
 enum SizeDice {
-    case mini, standart
+    case mini, standard
 }
 enum FaceOfDice: Int {
     case one, two, three, four, five, six
@@ -18,6 +18,7 @@ class BasisDice: UIView {
     class DicePoint: UIView { }
     
     let faceOfDice: FaceOfDice
+    let points: [DicePoint]
     
     static func Dices(size: SizeDice) -> [BasisDice] {
         var dices: [BasisDice] = []
@@ -30,11 +31,13 @@ class BasisDice: UIView {
         return dices
     }
     
-    init(size: SizeDice, face: FaceOfDice) {
+    init(size: SizeDice, face: FaceOfDice, points: [DicePoint]) {
         faceOfDice = face
+        self.points = points
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
-        layer.borderColor = UIColor(named: "SecondaryBackgroundColor")?.cgColor
+        layer.borderColor = UIColor.gameSecondaryBackgroundColor.cgColor
+        backgroundColor = .gameDiceBackgroundColor
         
         switch size {
         case .mini:
@@ -42,34 +45,39 @@ class BasisDice: UIView {
             layer.borderWidth = 1
             heightAnchor.constraint(equalToConstant: 30).isActive = true
             widthAnchor.constraint(equalToConstant: 30).isActive = true
-        case .standart:
+        case .standard:
             layer.cornerRadius = 15
             layer.borderWidth = 4
             heightAnchor.constraint(equalToConstant: 120).isActive = true
             widthAnchor.constraint(equalToConstant: 120).isActive = true
         }
-        
     }
+    
+    func createConstraintsForPoints(size: SizeDice) { }
         
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+   
 }
 
 extension BasisDice.DicePoint {
     convenience init(size: SizeDice) {
         self.init(frame: .zero)
-        translatesAutoresizingMaskIntoConstraints = false
-        layer.cornerRadius = bounds.height/2
         backgroundColor = .black
+        translatesAutoresizingMaskIntoConstraints = false
         
         switch size {
         case .mini:
+            layer.cornerRadius = 3
             heightAnchor.constraint(equalToConstant: 6).isActive = true
             widthAnchor.constraint(equalToConstant: 6).isActive = true
-        case .standart:
+        case .standard:
+            layer.cornerRadius = 12
             heightAnchor.constraint(equalToConstant: 24).isActive = true
             widthAnchor.constraint(equalToConstant: 24).isActive = true
         }
+        
     }
 }

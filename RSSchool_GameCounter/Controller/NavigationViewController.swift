@@ -19,7 +19,7 @@ class NavigationViewController: UINavigationController {
     
         navigationBar.titleTextAttributes = NSAttributedString.atrributesForNavigationTitle
         
-        navigationBar.barTintColor = UIColor.darkGray
+        navigationBar.barTintColor = UIColor.gameMainBackgroundColor
         
         UIBarButtonItem.appearance().setTitleTextAttributes(
             NSAttributedString.atrributesForBarButton,
@@ -28,7 +28,7 @@ class NavigationViewController: UINavigationController {
         UIBarButtonItem.appearance().setTitleTextAttributes(
             NSAttributedString.atrributesForBarButton,
             for: .highlighted)
-        UIFont.printAll()
+//        UIFont.printAll()
     }
     
     func configureAddPlayerViewController(_ addPlayerVC: AddPlayerViewController) {
@@ -68,11 +68,11 @@ class NavigationViewController: UINavigationController {
                
         gameProcessVC.navigationItem.leftBarButtonItem = newGameButton
         gameProcessVC.navigationItem.rightBarButtonItem = resultButton
-        gameProcessVC.title = "Game"
+        gameProcessVC.navigationItem.largeTitleDisplayMode = .always
     }
     
     @objc private func presentNewGame() {
-        present(GameProcessViewController(), animated: true, completion: nil)
+        present(NewGameViewController(), animated: true, completion: nil)
     }
     
     @objc private func pushResults() {
@@ -80,15 +80,15 @@ class NavigationViewController: UINavigationController {
     }
 }
 
-extension UIFont {
-    static func printAll() {
-        familyNames.sorted().forEach { familyName in
-            print("*** \(familyName) ***")
-            fontNames(forFamilyName: familyName).sorted().forEach { fontName in
-                print("\(fontName)")
-            }
-            print("---------------------")
-        }
-    }
-
-}
+//extension UIFont {
+//    static func printAll() {
+//        familyNames.sorted().forEach { familyName in
+//            print("*** \(familyName) ***")
+//            fontNames(forFamilyName: familyName).sorted().forEach { fontName in
+//                print("\(fontName)")
+//            }
+//            print("---------------------")
+//        }
+//    }
+//
+//}

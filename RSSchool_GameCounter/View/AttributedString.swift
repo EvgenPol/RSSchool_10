@@ -9,7 +9,7 @@ import UIKit
 
 extension NSAttributedString {
     static var atrributesForBarButton: [NSAttributedString.Key : Any] {
-        [NSAttributedString.Key.foregroundColor : UIColor(named: "BarButtonColor")!,
+        [NSAttributedString.Key.foregroundColor : UIColor.gameButtonColor,
          NSAttributedString.Key.font : UIFont.nunito800(17)]
     }
     

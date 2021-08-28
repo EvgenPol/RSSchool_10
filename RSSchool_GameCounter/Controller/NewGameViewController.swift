@@ -15,7 +15,7 @@ class NewGameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.init(named: "MainBackgroundColor")
+        view.backgroundColor = UIColor.gameMainBackgroundColor
         startButton.addGestureRecognizer(UITapGestureRecognizer(target: self,
                                                                 action: #selector(pushGameProcess)))
         

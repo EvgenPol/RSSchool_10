@@ -7,6 +7,9 @@
 
 import UIKit
 
+let widthScreen = min(UIScreen.main.bounds.size.width, UIScreen.main.bounds.size.height)
+let heightScreen = max(UIScreen.main.bounds.size.width, UIScreen.main.bounds.size.height)
+
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?

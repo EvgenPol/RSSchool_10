@@ -26,7 +26,7 @@ class AddPlayerViewController: UIViewController {
         textField = UITextField()
         view.addSubview(textField)
         configureTextField()
-        view.backgroundColor = UIColor(named: "MainBackgroundColor")
+        view.backgroundColor = UIColor.gameMainBackgroundColor
     }
     
     override func viewDidLoad() {
@@ -47,7 +47,7 @@ class AddPlayerViewController: UIViewController {
     private func configureTextField() {
         let width = UIScreen.main.bounds.width
         textField.frame = CGRect(x: 0, y: 160, width: width, height: 60)
-        textField.backgroundColor = UIColor(named: "SecondaryBackgroundColor")
+        textField.backgroundColor = UIColor.gameSecondaryBackgroundColor
         textField.attributedPlaceholder = NSAttributedString.forPlaceholder
         textField.font = UIFont.nunito800(24)
         textField.textColor = .white
@@ -83,7 +83,11 @@ class AddPlayerViewController: UIViewController {
 //MARK: TextField delegate
 extension AddPlayerViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        return textField.resignFirstResponder()
+        textField.resignFirstResponder()
+        if !playerName.isEmpty {
+            addPlayer()
+        }
+        return true
     }
     
     func textFieldShouldClear(_ textField: UITextField) -> Bool {

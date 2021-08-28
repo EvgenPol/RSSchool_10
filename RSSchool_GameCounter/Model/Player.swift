@@ -9,5 +9,6 @@ import Foundation
 
 struct Player: Codable {
     let name: String
+    var score = 0
 }
 

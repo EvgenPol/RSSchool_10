@@ -14,7 +14,7 @@ class StartGameButton: UIButton {
     
      init() {
         super.init(frame: .zero)
-        backgroundColor = UIColor(red: 84/255, green: 120/255, blue: 111/255, alpha: 1)
+        backgroundColor = .gameButtonHighlightedColor
         layer.cornerRadius = 33
         layer.masksToBounds = true
         setupTitle()
@@ -26,10 +26,10 @@ class StartGameButton: UIButton {
         viewTitle.addSubview(title)
         title.text = "Start game"
         title.textColor = UIColor.white
-        title.font = UIFont(name: "Nunito-ExtraBold", size: 24)
+        title.font = .nunito800(24)
         title.shadowOffset = CGSize(width: 0, height: 2)
         title.shadowColor = UIColor(red: 84/255, green: 120/255, blue: 111/255, alpha: 1)
-        viewTitle.backgroundColor = UIColor(red: 132/255, green: 184/255, blue: 173/255, alpha: 1)
+        viewTitle.backgroundColor = .gameButtonColor
     }
     
     private func createConstaints() {
@@ -56,10 +56,10 @@ class StartGameButton: UIButton {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        viewTitle.backgroundColor = self.backgroundColor
+        viewTitle.backgroundColor = backgroundColor
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        viewTitle.backgroundColor = UIColor(red: 132/255, green: 184/255, blue: 173/255, alpha: 1)
+        viewTitle.backgroundColor = .gameButtonColor
     }
 }
