@@ -14,22 +14,20 @@ enum FaceOfDice: Int {
     case one, two, three, four, five, six
 }
 
-class BasisDice: UIView {
+class BasisDice: UIButton {
     class DicePoint: UIView { }
     
     let faceOfDice: FaceOfDice
     let points: [DicePoint]
     
-    static func Dices(size: SizeDice) -> [BasisDice] {
-        var dices: [BasisDice] = []
-        dices += [DiceOne(size: size)]
-        dices += [DiceTwo(size: size)]
-        dices += [DiceThree(size: size)]
-        dices += [DiceFour(size: size)]
-        dices += [DiceFive(size: size)]
-        dices += [DiceSix(size: size)]
-        return dices
-    }
+    static var dicesStandard : [BasisDice] = [
+        DiceOne(size: .standard),
+        DiceTwo(size: .standard),
+        DiceThree(size: .standard),
+        DiceFour(size: .standard),
+        DiceFive(size: .standard),
+        DiceSix(size: .standard),
+     ]
     
     init(size: SizeDice, face: FaceOfDice, points: [DicePoint]) {
         faceOfDice = face
@@ -58,8 +56,6 @@ class BasisDice: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-   
 }
 
 extension BasisDice.DicePoint {

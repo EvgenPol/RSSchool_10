@@ -39,11 +39,27 @@ extension UIColor {
         UIColor(red: 222/255, green: 222/255, blue: 222/255, alpha: 1)
     }
     
-    static var gameProcessNamePlayer: UIColor {
+    static var gameProcessNamePlayerColor: UIColor {
         UIColor(red: 235/255, green: 174/255, blue: 104/255, alpha: 1)
-
     }
+    
     static var gameButtonHighlightedColor: UIColor {
         UIColor(red: 84/255, green: 120/255, blue: 111/255, alpha: 1)
+    }
+    
+    static var gameLetterColor: UIColor {
+        UIColor(red: 222/255, green: 222/255, blue: 222/255, alpha: 1)
+    }
+    
+    static var gameArrowButtonColor: UIColor {
+        UIColor(red: 235/255, green: 174/255, blue: 104/255, alpha: 1)
+    }
+    
+    static var gameSeparatorCellColor: UIColor {
+        UIColor(red: 85/255, green: 85/255, blue: 85/255, alpha: 1)
+    }
+   
+    static var gameHeaderLabelTextColor: UIColor {
+        UIColor(red: 235/255, green: 235/255, blue: 245/255, alpha: 0.6)
     }
 }

@@ -16,7 +16,7 @@ class DiceSix: BasisDice {
                       BasisDice.DicePoint.init(size: size),
                       BasisDice.DicePoint.init(size: size)]
         
-        super.init(size: size, face: .one, points: points)
+        super.init(size: size, face: .six, points: points)
         points.forEach { addSubview($0) }
         createConstraintsForPoints(size: size)
     }

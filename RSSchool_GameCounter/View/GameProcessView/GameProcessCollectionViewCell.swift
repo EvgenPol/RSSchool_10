@@ -28,7 +28,7 @@ class GameProcessCollectionViewCell: UICollectionViewCell {
     private func setupNameLabel() {
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.font = .nunito800(28)
-        nameLabel.textColor = .gameProcessNamePlayer
+        nameLabel.textColor = .gameProcessNamePlayerColor
         nameLabel.adjustsFontSizeToFitWidth = true
         addSubview(nameLabel)
     }

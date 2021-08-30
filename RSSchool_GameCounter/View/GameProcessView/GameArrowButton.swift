@@ -13,8 +13,10 @@ enum TypeGameArrowButton {
 
 class GameArrowButton: UIButton {
     var layerWithArrowBlock: CAShapeLayer!
+    var type: TypeGameArrowButton
 
     init(type: TypeGameArrowButton){
+        self.type = type
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
         heightAnchor.constraint(equalToConstant: 30).isActive = true
@@ -28,6 +30,14 @@ class GameArrowButton: UIButton {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func changeArrowHide() {
+        if layerWithArrowBlock.isHidden {
+            layerWithArrowBlock.isHidden = false
+        } else {
+            layerWithArrowBlock.isHidden = true
+        }
     }
     
     private func buildRightArrow() {
@@ -63,7 +73,7 @@ class GameArrowButton: UIButton {
     
     private func setupLayer(_ layer: CAShapeLayer, isRounded: Bool) {
         self.layer.addSublayer(layer)
-        layer.strokeColor = UIColor.white.cgColor
+        layer.strokeColor = UIColor.gameArrowButtonColor.cgColor
         layer.fillColor = UIColor.clear.cgColor
         layer.lineWidth = 6
         

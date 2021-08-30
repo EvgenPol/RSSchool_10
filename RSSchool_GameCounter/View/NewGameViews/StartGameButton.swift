@@ -9,7 +9,7 @@ import UIKit
 
 class StartGameButton: UIButton {
     private let title = UILabel()
-    private let viewTitle = UIView()
+    let viewTitle = UIView()
     var addedMask = false
     
      init() {

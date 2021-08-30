@@ -9,6 +9,7 @@ import UIKit
 
 
 class NavigationViewController: UINavigationController {
+    let headerView = GameHeaderView(title: "Game")
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +29,6 @@ class NavigationViewController: UINavigationController {
         UIBarButtonItem.appearance().setTitleTextAttributes(
             NSAttributedString.atrributesForBarButton,
             for: .highlighted)
-//        UIFont.printAll()
     }
     
     func configureAddPlayerViewController(_ addPlayerVC: AddPlayerViewController) {
@@ -65,30 +65,58 @@ class NavigationViewController: UINavigationController {
                                               style: .plain,
                                               target: self,
                                               action: #selector(pushResults))
-               
+        navigationBar.addSubview(headerView)
+        
         gameProcessVC.navigationItem.leftBarButtonItem = newGameButton
         gameProcessVC.navigationItem.rightBarButtonItem = resultButton
         gameProcessVC.navigationItem.largeTitleDisplayMode = .always
+        
+        navigationBar.addSubview(headerView)
+        headerView.diceButton = DiceFour(size: .mini)
+        headerView.diceButton?.addTarget(self, action: #selector(pushRollViewController), for: .touchUpInside)
+    
+        NSLayoutConstraint.activate([
+            headerView.leftAnchor.constraint(equalTo: navigationBar.leftAnchor,constant: 20),
+            headerView.rightAnchor.constraint(equalTo: navigationBar.rightAnchor,constant: -20),
+            headerView.bottomAnchor.constraint(equalTo: navigationBar.bottomAnchor),
+        ])
+    }
+    
+    func configureGameResultsViewController(_ resultsVC: GameResultViewController) {
+        let newGameButton = UIBarButtonItem.init(title: "New game",
+                                             style: .plain,
+                                             target: self,
+                                             action: #selector(presentNewGame))
+        
+        let resumeButton = UIBarButtonItem.init(title: "Resume",
+                                              style: .plain,
+                                              target: self,
+                                              action: #selector(returnGameProcess))
+        
+        resultsVC.navigationItem.leftBarButtonItem = newGameButton
+        resultsVC.navigationItem.rightBarButtonItem = resumeButton
+        resultsVC.navigationItem.largeTitleDisplayMode = .always
+        resultsVC.title = "Results"
+    }
+    
+    @objc private func returnGameProcess() {
+        popToRootViewController(animated: true)
     }
     
     @objc private func presentNewGame() {
-        present(NewGameViewController(), animated: true, completion: nil)
+        let newGameVC = NewGameViewController()
+        newGameVC.modalPresentationStyle = .fullScreen
+        present(newGameVC, animated: true, completion: nil)
     }
     
     @objc private func pushResults() {
-    
+        pushViewController(GameResultViewController(), animated: true)
     }
+    
+    @objc private func pushRollViewController() {
+        let rollVC = GameRollViewController()
+        rollVC.modalPresentationStyle = .overCurrentContext
+        present(rollVC, animated: true, completion: nil)
+    }
+    
 }
-
-//extension UIFont {
-//    static func printAll() {
-//        familyNames.sorted().forEach { familyName in
-//            print("*** \(familyName) ***")
-//            fontNames(forFamilyName: familyName).sorted().forEach { fontName in
-//                print("\(fontName)")
-//            }
-//            print("---------------------")
-//        }
-//    }
-//
-//}

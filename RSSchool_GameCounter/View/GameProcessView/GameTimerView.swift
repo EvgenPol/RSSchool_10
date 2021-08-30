@@ -7,15 +7,24 @@
 
 import UIKit
 
-class TimerView: UIView {
+@objc protocol TimerViewDelegate {
+    func updateTimer(new time: Int)
+}
+
+class GameTimerView: UIView {
     let timerLabel = UILabel()
     let playButton = UIButton()
     var playButtonLayer: CAShapeLayer!
     var seconds = 0 {
-        didSet { timerLabel.text = seconds.formateSecondsForTimerDisplay(seconds) }
+        didSet {
+            if seconds > 6000 {
+                seconds = 0
+            }
+            timerLabel.text = seconds.formateSecondsForTimerDisplay(seconds) }
     }
     
     var timer: Timer?
+    var delegate: TimerViewDelegate?
 
     private func setupTimerLabel() {
         timerLabel.text = "00:00"
@@ -54,8 +63,10 @@ class TimerView: UIView {
             timerLabel.textColor = .white
             playButton.setTitle("‖", for: .normal)
             playButtonLayer.isHidden = true
-            timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [unowned self] _ in
-                self.seconds += 1
+            timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
+                guard let weakSelf = self else { return }
+                weakSelf.seconds += 1
+                weakSelf.delegate?.updateTimer(new: weakSelf.seconds)
             }
         }
     }
@@ -91,7 +102,7 @@ extension Int {
     }
 }
 
-extension TimerView {
+extension GameTimerView {
     convenience init() {
         self.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false

@@ -15,7 +15,7 @@ class DiceFive: BasisDice {
                       BasisDice.DicePoint.init(size: size),
                       BasisDice.DicePoint.init(size: size)]
         
-        super.init(size: size, face: .one, points: points)
+        super.init(size: size, face: .five, points: points)
         points.forEach { addSubview($0) }
         createConstraintsForPoints(size: size)
     }
@@ -32,17 +32,17 @@ class DiceFive: BasisDice {
         }
         
         NSLayoutConstraint.activate([
-            points[0].topAnchor.constraint(equalTo: topAnchor, constant: constant),
-            points[0].leftAnchor.constraint(equalTo: leftAnchor, constant: constant),
+            points[0].topAnchor.constraint(equalTo: topAnchor, constant: constant/6),
+            points[0].leftAnchor.constraint(equalTo: leftAnchor, constant: constant/6),
             
-            points[1].topAnchor.constraint(equalTo: topAnchor, constant: constant),
-            points[1].rightAnchor.constraint(equalTo: rightAnchor, constant: -constant),
+            points[1].topAnchor.constraint(equalTo: topAnchor, constant: constant/6),
+            points[1].rightAnchor.constraint(equalTo: rightAnchor, constant: -constant/6),
             
-            points[2].bottomAnchor.constraint(equalTo: bottomAnchor, constant: -constant),
-            points[2].rightAnchor.constraint(equalTo: rightAnchor, constant: -constant),
+            points[2].bottomAnchor.constraint(equalTo: bottomAnchor, constant: -constant/6),
+            points[2].rightAnchor.constraint(equalTo: rightAnchor, constant: -constant/6),
             
-            points[3].bottomAnchor.constraint(equalTo: bottomAnchor, constant: -constant),
-            points[3].leftAnchor.constraint(equalTo: leftAnchor, constant: constant),
+            points[3].bottomAnchor.constraint(equalTo: bottomAnchor, constant: -constant/6),
+            points[3].leftAnchor.constraint(equalTo: leftAnchor, constant: constant/6),
             
             points[4].centerXAnchor.constraint(equalTo: centerXAnchor),
             points[4].centerYAnchor.constraint(equalTo: centerYAnchor)

@@ -19,13 +19,20 @@
 		6C11E68726D8299A006C57FF /* DiceFour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11E68626D8299A006C57FF /* DiceFour.swift */; };
 		6C11E68926D82A57006C57FF /* DiceFive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11E68826D82A57006C57FF /* DiceFive.swift */; };
 		6C11E68B26D82B09006C57FF /* DiceSix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11E68A26D82B09006C57FF /* DiceSix.swift */; };
-		6C11E68D26D83404006C57FF /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11E68C26D83404006C57FF /* TimerView.swift */; };
+		6C11E68D26D83404006C57FF /* GameTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11E68C26D83404006C57FF /* GameTimerView.swift */; };
 		6C11E6BC26DA27E3006C57FF /* GameHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11E6BB26DA27E3006C57FF /* GameHeaderView.swift */; };
 		6C11E6C126DA6AC5006C57FF /* GameProcessCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11E6C026DA6AC5006C57FF /* GameProcessCollectionViewCell.swift */; };
 		6C11E6C326DA6D69006C57FF /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6C11E6C226DA6D69006C57FF /* Nunito-Bold.ttf */; };
 		6C11E6C526DA921D006C57FF /* GameProcessMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11E6C426DA921D006C57FF /* GameProcessMenuViewController.swift */; };
 		6C11E6C726DA9657006C57FF /* GameScoreButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11E6C626DA9657006C57FF /* GameScoreButton.swift */; };
 		6C11E6C926DA9E25006C57FF /* GameArrowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11E6C826DA9E25006C57FF /* GameArrowButton.swift */; };
+		6C11E6CB26DB9ADF006C57FF /* GameRollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11E6CA26DB9ADF006C57FF /* GameRollViewController.swift */; };
+		6C11E6CD26DBCFCE006C57FF /* GamePageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11E6CC26DBCFCE006C57FF /* GamePageControl.swift */; };
+		6C11E6CF26DBE68E006C57FF /* GameUndoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11E6CE26DBE68E006C57FF /* GameUndoButton.swift */; };
+		6C11E6D426DC3120006C57FF /* GameResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11E6D326DC3120006C57FF /* GameResultViewController.swift */; };
+		6C11E6D626DC314A006C57FF /* GameResultTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11E6D526DC314A006C57FF /* GameResultTableCell.swift */; };
+		6C11E6D826DC6436006C57FF /* ExtensionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11E6D726DC6436006C57FF /* ExtensionView.swift */; };
+		6C11E6DB26DC65CE006C57FF /* NewGameAddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11E6DA26DC65CE006C57FF /* NewGameAddButton.swift */; };
 		6C86E5E726D5AF1100B6E3E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C86E5E626D5AF1100B6E3E3 /* AppDelegate.swift */; };
 		6C86E5EB26D5AF1100B6E3E3 /* NewGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C86E5EA26D5AF1100B6E3E3 /* NewGameViewController.swift */; };
 		6C86E5F026D5AF1800B6E3E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C86E5EF26D5AF1800B6E3E3 /* Assets.xcassets */; };
@@ -52,13 +59,20 @@
 		6C11E68626D8299A006C57FF /* DiceFour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceFour.swift; sourceTree = "<group>"; };
 		6C11E68826D82A57006C57FF /* DiceFive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceFive.swift; sourceTree = "<group>"; };
 		6C11E68A26D82B09006C57FF /* DiceSix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceSix.swift; sourceTree = "<group>"; };
-		6C11E68C26D83404006C57FF /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		6C11E68C26D83404006C57FF /* GameTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTimerView.swift; sourceTree = "<group>"; };
 		6C11E6BB26DA27E3006C57FF /* GameHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHeaderView.swift; sourceTree = "<group>"; };
 		6C11E6C026DA6AC5006C57FF /* GameProcessCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameProcessCollectionViewCell.swift; sourceTree = "<group>"; };
 		6C11E6C226DA6D69006C57FF /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Bold.ttf"; sourceTree = "<group>"; };
 		6C11E6C426DA921D006C57FF /* GameProcessMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameProcessMenuViewController.swift; sourceTree = "<group>"; };
 		6C11E6C626DA9657006C57FF /* GameScoreButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScoreButton.swift; sourceTree = "<group>"; };
 		6C11E6C826DA9E25006C57FF /* GameArrowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameArrowButton.swift; sourceTree = "<group>"; };
+		6C11E6CA26DB9ADF006C57FF /* GameRollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRollViewController.swift; sourceTree = "<group>"; };
+		6C11E6CC26DBCFCE006C57FF /* GamePageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePageControl.swift; sourceTree = "<group>"; };
+		6C11E6CE26DBE68E006C57FF /* GameUndoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameUndoButton.swift; sourceTree = "<group>"; };
+		6C11E6D326DC3120006C57FF /* GameResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameResultViewController.swift; sourceTree = "<group>"; };
+		6C11E6D526DC314A006C57FF /* GameResultTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameResultTableCell.swift; sourceTree = "<group>"; };
+		6C11E6D726DC6436006C57FF /* ExtensionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionView.swift; sourceTree = "<group>"; };
+		6C11E6DA26DC65CE006C57FF /* NewGameAddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGameAddButton.swift; sourceTree = "<group>"; };
 		6C86E5E326D5AF1100B6E3E3 /* RSSchool_GameCounter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RSSchool_GameCounter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C86E5E626D5AF1100B6E3E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6C86E5EA26D5AF1100B6E3E3 /* NewGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGameViewController.swift; sourceTree = "<group>"; };
@@ -88,9 +102,8 @@
 		6C11E67026D7893A006C57FF /* View */ = {
 			isa = PBXGroup;
 			children = (
-				6C11E67726D791DD006C57FF /* FontAndColor.swift */,
-				6C11E67926D7F727006C57FF /* AttributedString.swift */,
-				6C11E6BB26DA27E3006C57FF /* GameHeaderView.swift */,
+				6C11E6D926DC6478006C57FF /* ExtensionForDefaultClasses */,
+				6C11E6D526DC314A006C57FF /* GameResultTableCell.swift */,
 				6C11E6BF26DA69E5006C57FF /* GameProcessView */,
 				6C11E67D26D81C4B006C57FF /* Dices */,
 				6C11E67126D7896B006C57FF /* NewGameViews */,
@@ -104,6 +117,7 @@
 				6CC5DCE326D6A1FB006CA8DF /* GameCounterCell.swift */,
 				6CC5DCE526D6AE4B006CA8DF /* GameCounterCellButton.swift */,
 				6CC5DCE926D6ED79006CA8DF /* StartGameButton.swift */,
+				6C11E6DA26DC65CE006C57FF /* NewGameAddButton.swift */,
 			);
 			path = NewGameViews;
 			sourceTree = "<group>";
@@ -123,8 +137,9 @@
 				6C02348826D6345300770FCB /* NavigationViewController.swift */,
 				6C86E5EA26D5AF1100B6E3E3 /* NewGameViewController.swift */,
 				6C11E67526D78B6F006C57FF /* AddPlayerViewController.swift */,
-				6C11E67B26D80322006C57FF /* GameProcessViewController.swift */,
-				6C11E6C426DA921D006C57FF /* GameProcessMenuViewController.swift */,
+				6C11E6D226DC30C6006C57FF /* GameProcess */,
+				6C11E6CA26DB9ADF006C57FF /* GameRollViewController.swift */,
+				6C11E6D326DC3120006C57FF /* GameResultViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -158,12 +173,34 @@
 		6C11E6BF26DA69E5006C57FF /* GameProcessView */ = {
 			isa = PBXGroup;
 			children = (
-				6C11E68C26D83404006C57FF /* TimerView.swift */,
+				6C11E6BB26DA27E3006C57FF /* GameHeaderView.swift */,
+				6C11E68C26D83404006C57FF /* GameTimerView.swift */,
 				6C11E6C026DA6AC5006C57FF /* GameProcessCollectionViewCell.swift */,
 				6C11E6C626DA9657006C57FF /* GameScoreButton.swift */,
 				6C11E6C826DA9E25006C57FF /* GameArrowButton.swift */,
+				6C11E6CC26DBCFCE006C57FF /* GamePageControl.swift */,
+				6C11E6CE26DBE68E006C57FF /* GameUndoButton.swift */,
 			);
 			path = GameProcessView;
+			sourceTree = "<group>";
+		};
+		6C11E6D226DC30C6006C57FF /* GameProcess */ = {
+			isa = PBXGroup;
+			children = (
+				6C11E67B26D80322006C57FF /* GameProcessViewController.swift */,
+				6C11E6C426DA921D006C57FF /* GameProcessMenuViewController.swift */,
+			);
+			path = GameProcess;
+			sourceTree = "<group>";
+		};
+		6C11E6D926DC6478006C57FF /* ExtensionForDefaultClasses */ = {
+			isa = PBXGroup;
+			children = (
+				6C11E67726D791DD006C57FF /* FontAndColor.swift */,
+				6C11E67926D7F727006C57FF /* AttributedString.swift */,
+				6C11E6D726DC6436006C57FF /* ExtensionView.swift */,
+			);
+			path = ExtensionForDefaultClasses;
 			sourceTree = "<group>";
 		};
 		6C86E5DA26D5AF1000B6E3E3 = {
@@ -280,21 +317,28 @@
 				6C11E68126D824EF006C57FF /* DiceOne.swift in Sources */,
 				6C11E67A26D7F727006C57FF /* AttributedString.swift in Sources */,
 				6CC5DCE626D6AE4B006CA8DF /* GameCounterCellButton.swift in Sources */,
+				6C11E6D826DC6436006C57FF /* ExtensionView.swift in Sources */,
 				6C11E67826D791DD006C57FF /* FontAndColor.swift in Sources */,
 				6C11E68926D82A57006C57FF /* DiceFive.swift in Sources */,
 				6C02348926D6345300770FCB /* NavigationViewController.swift in Sources */,
 				6C86E5EB26D5AF1100B6E3E3 /* NewGameViewController.swift in Sources */,
+				6C11E6CB26DB9ADF006C57FF /* GameRollViewController.swift in Sources */,
 				6C11E68526D828C5006C57FF /* DiceThree.swift in Sources */,
-				6C11E68D26D83404006C57FF /* TimerView.swift in Sources */,
+				6C11E68D26D83404006C57FF /* GameTimerView.swift in Sources */,
 				6C11E67F26D81C92006C57FF /* BasisDice.swift in Sources */,
 				6C11E67C26D80322006C57FF /* GameProcessViewController.swift in Sources */,
 				6C11E67626D78B6F006C57FF /* AddPlayerViewController.swift in Sources */,
 				6CC5DCEA26D6ED79006CA8DF /* StartGameButton.swift in Sources */,
+				6C11E6CD26DBCFCE006C57FF /* GamePageControl.swift in Sources */,
+				6C11E6D426DC3120006C57FF /* GameResultViewController.swift in Sources */,
 				6CC5DCD926D6624A006CA8DF /* GameCounter.swift in Sources */,
+				6C11E6D626DC314A006C57FF /* GameResultTableCell.swift in Sources */,
 				6C11E6C126DA6AC5006C57FF /* GameProcessCollectionViewCell.swift in Sources */,
+				6C11E6CF26DBE68E006C57FF /* GameUndoButton.swift in Sources */,
 				6C11E68B26D82B09006C57FF /* DiceSix.swift in Sources */,
 				6C11E6C726DA9657006C57FF /* GameScoreButton.swift in Sources */,
 				6C11E6BC26DA27E3006C57FF /* GameHeaderView.swift in Sources */,
+				6C11E6DB26DC65CE006C57FF /* NewGameAddButton.swift in Sources */,
 				6C11E6C526DA921D006C57FF /* GameProcessMenuViewController.swift in Sources */,
 				6C11E6C926DA9E25006C57FF /* GameArrowButton.swift in Sources */,
 				6CC5DCDB26D6645C006CA8DF /* Player.swift in Sources */,

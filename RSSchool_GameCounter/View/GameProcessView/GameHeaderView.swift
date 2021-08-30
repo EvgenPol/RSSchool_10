@@ -18,12 +18,13 @@ class GameHeaderView: UILabel {
         font = UIFont.nunito800(36)
         textColor = .white
         translatesAutoresizingMaskIntoConstraints = false
+        isUserInteractionEnabled = true
     }
    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+   
     private func setupDiceButton() {
         guard let dice = diceButton else { return }
         addSubview(dice)
