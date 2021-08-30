@@ -31,12 +31,12 @@ class AddPlayerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         if let navigation = navigationController as? NavigationViewController {
             navigation.configureAddPlayerViewController(self)
             navigationItem.rightBarButtonItem?.target = self
             navigationItem.rightBarButtonItem?.action = #selector(addPlayer)
         }
+        view.addGestureRecognizer(UITapGestureRecognizer(target: textField, action: #selector(resignFirstResponder)))
     }
     
     @objc private func addPlayer() {
@@ -52,7 +52,6 @@ class AddPlayerViewController: UIViewController {
         textField.font = UIFont.nunito800(24)
         textField.textColor = .white
         textField.placeholder = "Player Name"
-        textField.keyboardType = .asciiCapable
         textField.keyboardAppearance = .dark
         textField.addTarget(self, action: #selector(changeName), for: .editingChanged)
         textField.autocorrectionType = .no
@@ -90,9 +89,6 @@ extension AddPlayerViewController: UITextFieldDelegate {
         return true
     }
     
-    func textFieldShouldClear(_ textField: UITextField) -> Bool {
-        true
-    }
 }
 
 extension NSAttributedString {

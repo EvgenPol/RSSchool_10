@@ -8,9 +8,7 @@
 import UIKit
 
 class GameCounterCell: UITableViewCell {
-    private var header: UILabel?
     var leftButton: GameCounterCellButton!
-    var rightButton : UIButton?
     let title = UILabel()
     private let separator = UIView()
     
@@ -22,14 +20,11 @@ class GameCounterCell: UITableViewCell {
     
     private func configureDefaultCell() {
         leftButton = GameCounterCellButton().createLeftButton(type: .delete)
-        let rightButton = GameCounterCellButton().createRightButton()
-        self.rightButton = rightButton
         separator.translatesAutoresizingMaskIntoConstraints = false
         separator.backgroundColor = .gameSeparatorCellColor
         title.textColor = .white
         title.font = UIFont.nunito800(20)
         addSubview(leftButton)
-        addSubview(rightButton)
         addSubview(title)
         addSubview(separator)
     }
@@ -50,16 +45,6 @@ class GameCounterCell: UITableViewCell {
             separator.heightAnchor.constraint(equalToConstant: 1),
         ])
         
-        if let head = header {
-            head.translatesAutoresizingMaskIntoConstraints = false
-            head.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
-            head.topAnchor.constraint(equalTo: topAnchor, constant: 16).isActive = true
-        }
-        
-        if let rightButton = rightButton {
-            rightButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -15).isActive = true
-            rightButton.centerYAnchor.constraint(equalTo: leftButton.centerYAnchor).isActive = true
-        }
         
     }
 }

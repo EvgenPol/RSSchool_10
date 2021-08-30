@@ -31,7 +31,7 @@
 		6C11E6CF26DBE68E006C57FF /* GameUndoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11E6CE26DBE68E006C57FF /* GameUndoButton.swift */; };
 		6C11E6D426DC3120006C57FF /* GameResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11E6D326DC3120006C57FF /* GameResultViewController.swift */; };
 		6C11E6D626DC314A006C57FF /* GameResultTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11E6D526DC314A006C57FF /* GameResultTableCell.swift */; };
-		6C11E6D826DC6436006C57FF /* ExtensionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11E6D726DC6436006C57FF /* ExtensionView.swift */; };
+		6C11E6D826DC6436006C57FF /* RoundCornersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11E6D726DC6436006C57FF /* RoundCornersView.swift */; };
 		6C11E6DB26DC65CE006C57FF /* NewGameAddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11E6DA26DC65CE006C57FF /* NewGameAddButton.swift */; };
 		6C86E5E726D5AF1100B6E3E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C86E5E626D5AF1100B6E3E3 /* AppDelegate.swift */; };
 		6C86E5EB26D5AF1100B6E3E3 /* NewGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C86E5EA26D5AF1100B6E3E3 /* NewGameViewController.swift */; };
@@ -71,7 +71,7 @@
 		6C11E6CE26DBE68E006C57FF /* GameUndoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameUndoButton.swift; sourceTree = "<group>"; };
 		6C11E6D326DC3120006C57FF /* GameResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameResultViewController.swift; sourceTree = "<group>"; };
 		6C11E6D526DC314A006C57FF /* GameResultTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameResultTableCell.swift; sourceTree = "<group>"; };
-		6C11E6D726DC6436006C57FF /* ExtensionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionView.swift; sourceTree = "<group>"; };
+		6C11E6D726DC6436006C57FF /* RoundCornersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundCornersView.swift; sourceTree = "<group>"; };
 		6C11E6DA26DC65CE006C57FF /* NewGameAddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGameAddButton.swift; sourceTree = "<group>"; };
 		6C86E5E326D5AF1100B6E3E3 /* RSSchool_GameCounter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RSSchool_GameCounter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C86E5E626D5AF1100B6E3E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -103,10 +103,10 @@
 			isa = PBXGroup;
 			children = (
 				6C11E6D926DC6478006C57FF /* ExtensionForDefaultClasses */,
-				6C11E6D526DC314A006C57FF /* GameResultTableCell.swift */,
 				6C11E6BF26DA69E5006C57FF /* GameProcessView */,
 				6C11E67D26D81C4B006C57FF /* Dices */,
 				6C11E67126D7896B006C57FF /* NewGameViews */,
+				6C11E6D526DC314A006C57FF /* GameResultTableCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -134,10 +134,10 @@
 		6C11E67326D78990006C57FF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				6C11E6D226DC30C6006C57FF /* GameProcess */,
 				6C02348826D6345300770FCB /* NavigationViewController.swift */,
 				6C86E5EA26D5AF1100B6E3E3 /* NewGameViewController.swift */,
 				6C11E67526D78B6F006C57FF /* AddPlayerViewController.swift */,
-				6C11E6D226DC30C6006C57FF /* GameProcess */,
 				6C11E6CA26DB9ADF006C57FF /* GameRollViewController.swift */,
 				6C11E6D326DC3120006C57FF /* GameResultViewController.swift */,
 			);
@@ -198,7 +198,7 @@
 			children = (
 				6C11E67726D791DD006C57FF /* FontAndColor.swift */,
 				6C11E67926D7F727006C57FF /* AttributedString.swift */,
-				6C11E6D726DC6436006C57FF /* ExtensionView.swift */,
+				6C11E6D726DC6436006C57FF /* RoundCornersView.swift */,
 			);
 			path = ExtensionForDefaultClasses;
 			sourceTree = "<group>";
@@ -317,7 +317,7 @@
 				6C11E68126D824EF006C57FF /* DiceOne.swift in Sources */,
 				6C11E67A26D7F727006C57FF /* AttributedString.swift in Sources */,
 				6CC5DCE626D6AE4B006CA8DF /* GameCounterCellButton.swift in Sources */,
-				6C11E6D826DC6436006C57FF /* ExtensionView.swift in Sources */,
+				6C11E6D826DC6436006C57FF /* RoundCornersView.swift in Sources */,
 				6C11E67826D791DD006C57FF /* FontAndColor.swift in Sources */,
 				6C11E68926D82A57006C57FF /* DiceFive.swift in Sources */,
 				6C02348926D6345300770FCB /* NavigationViewController.swift in Sources */,

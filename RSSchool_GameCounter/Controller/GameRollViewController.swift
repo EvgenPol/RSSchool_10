@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class GameRollViewController: UIViewController {
     lazy var dice = BasisDice.dicesStandard.randomDice()
@@ -32,6 +33,9 @@ class GameRollViewController: UIViewController {
         dice.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+    }
     
     @objc private func dismissSelf() {
         dismiss(animated: true, completion: nil)
@@ -41,8 +45,6 @@ class GameRollViewController: UIViewController {
 fileprivate extension Array where Element == BasisDice {
     func randomDice() -> BasisDice {
         let randomNumber = Int(arc4random_uniform(UInt32(count)))
-        print(randomNumber)
-        print(self[randomNumber].faceOfDice)
         return self[randomNumber]
     }
 }

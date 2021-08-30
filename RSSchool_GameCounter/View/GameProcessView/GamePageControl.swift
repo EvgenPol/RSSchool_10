@@ -36,14 +36,15 @@ class GameCustomPageControl: UIScrollView {
             arrayOfLabels += [label]
         }
         stackNames = UIStackView(arrangedSubviews: arrayOfLabels)
-        stackNames?.translatesAutoresizingMaskIntoConstraints = false
-        stackNames?.alignment = .center
-        stackNames?.spacing = 5
+        guard let stack = stackNames else { return }
+        addSubview(stack)
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.alignment = .center
+        stack.spacing = 5
     }
     
     private func setupConstraints() {
         guard let stack = stackNames else { return }
-        addSubview(stack)
         NSLayoutConstraint.activate([
             stack.centerYAnchor.constraint(equalTo: centerYAnchor),
             stack.centerXAnchor.constraint(equalTo: centerXAnchor),
@@ -59,9 +60,16 @@ class GameCustomPageControl: UIScrollView {
         label.textColor = .gameLetterColor
         currentPlayer = player
     }
+    
+    func updatePlayers(namesOfPlayers: [Character]) {
+        stackNames?.removeFromSuperview()
+        stackNames = nil
+        setupStackNames(namesOfPlayers)
+        setupConstraints()
+    }
 }
 
 extension GameCustomPageControl: UIScrollViewDelegate {
-   
+   //TODO:
 }
  

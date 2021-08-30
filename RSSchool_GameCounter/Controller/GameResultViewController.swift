@@ -40,7 +40,6 @@ class GameResultViewController: UIViewController {
     }
     
     private func createTopList() {
-       
         var currentNumber = 1
         var currenPoint = sortedPlayers.first!.score
         sortedPlayers.forEach { player in
@@ -74,7 +73,7 @@ class GameResultViewController: UIViewController {
 extension GameResultViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        gameCounter.moves.isEmpty ? 1 : 2
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -86,7 +85,6 @@ extension GameResultViewController: UITableViewDataSource {
         }
     }
 
-
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: GameResultTableCell
         if indexPath.section == 0 {
@@ -94,7 +92,8 @@ extension GameResultViewController: UITableViewDataSource {
             cell.setupForTopPlayers()
             
             let mutableString = NSMutableAttributedString(string: "#\(topList[indexPath.row].number) \(sortedPlayers[indexPath.row].name)",
-                                                          attributes: [NSAttributedString.Key.font:UIFont.nunito800(28)] )
+                                                          attributes: [NSAttributedString.Key.font : UIFont.nunito800(28)] )
+            
             mutableString.addAttribute(NSAttributedString.Key.foregroundColor,
                                        value: UIColor.gameArrowButtonColor,
                                        range: NSRange(location:3, length: mutableString.length - 3))
@@ -115,8 +114,6 @@ extension GameResultViewController: UITableViewDataSource {
         }
         return cell
     }
-    
-    
 }
 
 extension GameResultViewController: UITableViewDelegate {

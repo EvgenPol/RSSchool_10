@@ -12,23 +12,24 @@ class NewGameViewController: UIViewController {
     let tableView = UITableView(frame: .zero, style: .grouped)
     let startButton = StartGameButton.init()
     let containerView = UIView()
+    var temporaryPlayersList = [Player]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.gameMainBackgroundColor
         startButton.addGestureRecognizer(UITapGestureRecognizer(target: self,
-                                                                action: #selector(pushGameProcess)))
-        
+                                                                action: #selector(tapStartGameButton)))
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = UIColor.clear
         tableView.separatorStyle = .none
         tableView.register(GameCounterCell.self, forCellReuseIdentifier: "player")
+        tableView.isEditing = true
+        tableView.showsVerticalScrollIndicator = false
+        
         
         if let navigationVC = navigationController as? NavigationViewController {
-            navigationVC.configureNewGameViewController(self)
-        } else {
-            createTabBarItemsForModal()
+            navigationVC.configureNewGameViewController(self, isGameRun: gameCounter.isGameRun)
         }
         
         addConsTable()
@@ -49,25 +50,30 @@ class NewGameViewController: UIViewController {
         startButton.setupMaskedTitle()
     }
     
-    @objc private func tapCancel() {
-        //TODO:
-    }
     
-    @objc private func pushGameProcess() {
-        if !gameCounter.players.isEmpty {
-         navigationController?.pushViewController(GameProcessViewController(), animated: true)
-        } else {
+    @objc private func tapStartGameButton() {
+        guard !gameCounter.players.isEmpty else {
             let alert = UIAlertController(title: "Ошибка!", message: "Нужен как минимум один игрок", preferredStyle: .alert)
-            alert.view.backgroundColor = .gameMainBackgroundColor
-            alert.addAction(UIAlertAction(title: "OK", style: .cancel) { [weak self] _ in
+            let viewAlert = alert.view.subviews.first?.subviews.first?.subviews.first
+            viewAlert?.backgroundColor = .gameSecondaryBackgroundColor
+            viewAlert?.layer.borderWidth = 3
+            viewAlert?.layer.borderColor = UIColor.black.cgColor
+            alert.addAction(UIAlertAction(title: "OK", style: .destructive) { [weak self] _ in
                 self?.startButton.viewTitle.backgroundColor = .gameButtonColor
             })
             present(alert, animated: true, completion: nil)
+            return
         }
-    }
-    
-    private func createTabBarItemsForModal() {
-        //TODO:
+        
+        gameCounter.restartGame()
+        
+        if gameCounter.isGameRun {
+            dismiss(animated: true, completion: nil)
+        } else {
+            navigationController?.pushViewController(GameProcessViewController(), animated: true)
+            gameCounter.isGameRun = true
+            navigationController?.viewControllers.removeFirst()
+        }
     }
     
     private func addConsTable() {
@@ -76,11 +82,10 @@ class NewGameViewController: UIViewController {
         containerView.translatesAutoresizingMaskIntoConstraints = false
        
         NSLayoutConstraint.activate([
-            
             containerView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
             containerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 25),
             containerView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20),
-            containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            containerView.bottomAnchor.constraint(equalTo: startButton.centerYAnchor),
             
             tableView.leftAnchor.constraint(equalTo: containerView.leftAnchor),
             tableView.topAnchor.constraint(equalTo: containerView.topAnchor),
@@ -96,7 +101,7 @@ class NewGameViewController: UIViewController {
 
 
 
-//MARK: Working with Table View
+//MARK: - TableView Delegate
 extension NewGameViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
@@ -111,40 +116,28 @@ extension NewGameViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         40
     }
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView()
-        let label = UILabel()
-        view.addSubview(label)
-        label.text = "Players"
-        label.font = .nunito600(16)
-        label.textColor = .gameHeaderLabelTextColor
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.topAnchor.constraint(equalTo: view.topAnchor,constant: 15).isActive = true
-        label.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 15).isActive = true
-        label.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -15).isActive = true
-        label.heightAnchor.constraint(equalToConstant: 25).isActive = true
-        view.roundCorners(corners: [.layerMaxXMinYCorner, .layerMinXMinYCorner], radius: 15)
-        view.backgroundColor = .gameSecondaryBackgroundColor
-        return view
-    }
-    
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let footer = NewGameAddFooter()
-        footer.addTarget(self, action: #selector(tapAddPlayer), for: .touchUpInside)
-        return footer
-    }
-    
+  
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         60
+    }
+    
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        true
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        .none
     }
 }
     
 
+//MARK: - TableView DataSouce
 extension NewGameViewController: UITableViewDataSource {
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return gameCounter.players.count
     }
 
+    //tableView configure cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell: GameCounterCell
         
@@ -163,7 +156,43 @@ extension NewGameViewController: UITableViewDataSource {
         cell.selectionStyle = .none
         return cell
     }
+    
+    //TableView Header
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView()
+        let label = UILabel()
+        view.addSubview(label)
+        label.text = "Players"
+        label.font = .nunito600(16)
+        label.textColor = .gameHeaderLabelTextColor
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.topAnchor.constraint(equalTo: view.topAnchor,constant: 15).isActive = true
+        label.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 15).isActive = true
+        label.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -15).isActive = true
+        label.heightAnchor.constraint(equalToConstant: 25).isActive = true
+        view.roundCorners(corners: [.layerMaxXMinYCorner, .layerMinXMinYCorner], radius: 15)
+        view.backgroundColor = .gameSecondaryBackgroundColor
+        return view
+    }
+    
+    //TableView Footer
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footer = NewGameAddFooter()
+        footer.addTarget(self, action: #selector(tapAddPlayer), for: .touchUpInside)
+        return footer
+    }
+    
+    func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        false
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        gameCounter.change(player: sourceIndexPath.row, to: destinationIndexPath.row)
+    }
+    
 }
+
+//MARK: - tap buttons in cell
 
 extension NewGameViewController {
     @objc private func tapAddPlayer() {

@@ -90,7 +90,7 @@ extension GameCounterCellButton {
         func createStick() -> UIView {
             let stick = UIView()
             stick.translatesAutoresizingMaskIntoConstraints = false
-            stick.heightAnchor.constraint(equalToConstant: 1).isActive = true
+            stick.heightAnchor.constraint(equalToConstant: 2).isActive = true
             stick.backgroundColor = UIColor.white
             stick.layer.cornerRadius = 0.5
             addSubview(stick)
@@ -100,22 +100,24 @@ extension GameCounterCellButton {
         let stickOne = createStick()
         let stickTwo = createStick()
         let stickThree = createStick()
-        
+      
         NSLayoutConstraint.activate([
-            heightAnchor.constraint(equalToConstant: 8),
-            widthAnchor.constraint(equalToConstant: 18),
+            heightAnchor.constraint(equalToConstant: 12),
+            widthAnchor.constraint(equalToConstant: 20),
             
             stickOne.leftAnchor.constraint(equalTo: leftAnchor),
             stickOne.rightAnchor.constraint(equalTo: rightAnchor),
             stickOne.bottomAnchor.constraint(equalTo: bottomAnchor),
-            
+
+
             stickTwo.leftAnchor.constraint(equalTo: leftAnchor),
             stickTwo.rightAnchor.constraint(equalTo: rightAnchor),
             stickTwo.centerYAnchor.constraint(equalTo: centerYAnchor),
-            
+
             stickThree.leftAnchor.constraint(equalTo: leftAnchor),
             stickThree.rightAnchor.constraint(equalTo: rightAnchor),
             stickThree.topAnchor.constraint(equalTo: topAnchor),
+            
         ])
         
         return self

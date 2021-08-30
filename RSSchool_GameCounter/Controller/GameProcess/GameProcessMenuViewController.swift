@@ -20,14 +20,7 @@ class GameProcessMenuViewController: UIViewController {
         GameScoreButton(size: .standard, title: "+10"),
     ])
     let undoButton = GameUndoButton(frame: .zero)
-    let pageControl = GameCustomPageControl(namesOfPlayers: {
-        var names = [Character]()
-        for player in GameCounter.shared.players {
-            guard let letter = player.name.first else { continue }
-            names += [letter]
-        }
-        return names
-    }())
+    lazy var pageControl = GameCustomPageControl(namesOfPlayers: closureForPageControl())
      
     override func loadView() {
         super.loadView()
@@ -43,7 +36,15 @@ class GameProcessMenuViewController: UIViewController {
         super.viewDidLoad()
         setupButtons()
         createConstraints()
-        pageControl.updateCurentPlayer(0)
+        pageControl.updateCurentPlayer(gameCounter.currentPlayer)
+        changeArrowsBlockHide(currentPlayer: gameCounter.currentPlayer)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        pageControl.updatePlayers(namesOfPlayers: closureForPageControl())
+        pageControl.updateCurentPlayer(gameCounter.currentPlayer)
+        changeArrowsBlockHide(currentPlayer: gameCounter.currentPlayer)
+        print(gameCounter.currentPlayer)
     }
     
     private func setupButtons() {
@@ -65,7 +66,7 @@ class GameProcessMenuViewController: UIViewController {
     
     private func createConstraints() {
         NSLayoutConstraint.activate([
-            largeScoreButton.topAnchor.constraint(equalTo: view.topAnchor),
+            largeScoreButton.bottomAnchor.constraint(equalTo: stackButtons.topAnchor, constant: -22),
             largeScoreButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             leftArrow.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 46),
@@ -74,13 +75,13 @@ class GameProcessMenuViewController: UIViewController {
             rightArrow.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -46),
             rightArrow.centerYAnchor.constraint(equalTo: largeScoreButton.centerYAnchor),
             
-            stackButtons.topAnchor.constraint(equalTo: largeScoreButton.bottomAnchor, constant: 22),
+            stackButtons.bottomAnchor.constraint(equalTo: pageControl.topAnchor, constant: -20),
             stackButtons.centerXAnchor.constraint(equalTo: largeScoreButton.centerXAnchor),
             
             undoButton.centerYAnchor.constraint(equalTo: pageControl.centerYAnchor),
             undoButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 40),
             
-            pageControl.topAnchor.constraint(equalTo: stackButtons.bottomAnchor, constant: 20),
+            pageControl.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -30),
             pageControl.leftAnchor.constraint(equalTo: view.leftAnchor),
             pageControl.rightAnchor.constraint(equalTo: view.rightAnchor),
             pageControl.heightAnchor.constraint(equalToConstant: 24)
@@ -90,18 +91,17 @@ class GameProcessMenuViewController: UIViewController {
     
     @objc private func addScorePoints(_ sender: GameScoreButton) {
         guard let gameProcessVC = parent as? GameProcessViewController else { return }
-        if var indexPath = gameProcessVC.currentIndexPathPlayer(), let points = sender.score {
+        if let indexPath = gameProcessVC.currentIndexPathPlayer(), let points = sender.score {
             largeScoreButton.isUserInteractionEnabled = false
             stackButtons.arrangedSubviews.forEach { $0.isUserInteractionEnabled = false }
             gameCounter.updateScorePlayer(for: indexPath.row, with: points)
             gameCounter.moves += [(indexPath, points)]
-            print(gameCounter.moves.count)
-            
+        
             UIView.performWithoutAnimation {
                 gameProcessVC.playersCollection.reloadItems(at: [indexPath])
             }
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { [weak self] in
                 guard let weakSelf = self else { return }
                 gameProcessVC.nextPlayer()
                 weakSelf.largeScoreButton.isUserInteractionEnabled = true
@@ -111,21 +111,26 @@ class GameProcessMenuViewController: UIViewController {
     }
     
     @objc private func tapUndo() {
-        guard !gameCounter.moves.isEmpty else { return }
+        guard !gameCounter.moves.isEmpty,
+              let mainGameVC = parent as? GameProcessViewController
+        else { return }
+        
         let move = gameCounter.moves.removeLast()
-        gameCounter.players[move.player.row].score -= move.points
-        let mainGameVC = parent as? GameProcessViewController
+        let currentPlayer = mainGameVC.currentIndexPathPlayer()!.row
         
-//        if let lastPlayer = gameCounter.moves.last {
-//            mainGameVC?.nextPlayer(lastPlayer.player)
-//        } else {
-//            mainGameVC?.nextPlayer(IndexPath.init(row: 0, section: 0))
-//        }
-        
-        UIView.performWithoutAnimation {
-            mainGameVC?.playersCollection.reloadItems(at: [move.player])
+        if currentPlayer > move.player.row {
+            mainGameVC.scroll(at: (currentPlayer - move.player.row), direction: .left, isNewMove: true)
+        } else {
+            mainGameVC.scroll(at: (move.player.row - currentPlayer), direction: .right, isNewMove: true)
         }
         
+        gameCounter.players[move.player.row].score -= move.points
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            UIView.performWithoutAnimation {
+                mainGameVC.playersCollection.reloadItems(at: [move.player])
+            }
+        }
     }
     
     @objc private func tapArrow(_ sender: GameArrowButton) {
@@ -136,11 +141,11 @@ class GameProcessMenuViewController: UIViewController {
             guard let weakSelf = self else { return }
             switch sender.type {
             case .left where currentPlayer == 0:
-                gameProcessVC.scroll(at: weakSelf.gameCounter.players.count - 1, direction: .right)
+                gameProcessVC.scroll(at: weakSelf.gameCounter.players.count - 1, direction: .right, isNewMove: true)
             case .left:
                 gameProcessVC.scrollLeft()
             case .right where currentPlayer == weakSelf.gameCounter.players.count - 1:
-                gameProcessVC.scroll(at: weakSelf.gameCounter.players.count - 1, direction: .left)
+                gameProcessVC.scroll(at: weakSelf.gameCounter.players.count - 1, direction: .left, isNewMove: true)
             case .right:
                 gameProcessVC.scrollRight()
             }
@@ -148,16 +153,29 @@ class GameProcessMenuViewController: UIViewController {
        
     }
     
-    func changeArrowsBlockHide(currentPlayer: IndexPath) {
-        if currentPlayer.row == 0 {
+    func changeArrowsBlockHide(currentPlayer: Int) {
+        if currentPlayer == 0 {
             leftArrow.layerWithArrowBlock.isHidden = false
         } else {
             leftArrow.layerWithArrowBlock.isHidden = true
         }
-        if currentPlayer.row == gameCounter.players.count - 1 {
+        if currentPlayer == gameCounter.players.count - 1 {
             rightArrow.layerWithArrowBlock.isHidden = false
         } else {
             rightArrow.layerWithArrowBlock.isHidden = true
         }
     }
+}
+
+fileprivate extension GameProcessMenuViewController {
+    var closureForPageControl: () -> [Character] {{ [weak self] in
+        guard let weakSelf = self else { return [] }
+        var names = [Character]()
+        for player in weakSelf.gameCounter.players {
+            guard let letter = player.name.first else { continue }
+            names += [letter]
+        }
+        return names
+    }}
+    
 }

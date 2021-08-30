@@ -46,13 +46,15 @@ class NavigationViewController: UINavigationController {
         addPlayerVC.navigationItem.leftBarButtonItem = backButton
     }
     
-    func configureNewGameViewController(_ newVC: NewGameViewController) {
-        let cancelButton = UIBarButtonItem.init(title: "cancel",
-                                              style: .plain,
-                                              target: nil,
-                                              action: nil)
-        newVC.navigationItem.leftBarButtonItem = cancelButton
+    func configureNewGameViewController(_ newVC: NewGameViewController, isGameRun: Bool) {
         newVC.title = "Game Counter"
+        if isGameRun {
+            let cancelButton = UIBarButtonItem.init(title: "cancel",
+                                                  style: .plain,
+                                                  target: self,
+                                                  action: #selector(tapCancel))
+            newVC.navigationItem.leftBarButtonItem = cancelButton
+        }
     }
     
     func configureGameProcessViewController(_ gameProcessVC: GameProcessViewController) {
@@ -99,14 +101,20 @@ class NavigationViewController: UINavigationController {
         resultsVC.title = "Results"
     }
     
+    @objc private func tapCancel () {
+        dismiss(animated: true, completion: nil)
+    }
+    
     @objc private func returnGameProcess() {
         popToRootViewController(animated: true)
     }
     
     @objc private func presentNewGame() {
         let newGameVC = NewGameViewController()
+        let newNavigationVC = NavigationViewController(rootViewController: newGameVC)
+        newNavigationVC.modalPresentationStyle = .fullScreen
         newGameVC.modalPresentationStyle = .fullScreen
-        present(newGameVC, animated: true, completion: nil)
+        present(newNavigationVC, animated: true, completion: nil)
     }
     
     @objc private func pushResults() {

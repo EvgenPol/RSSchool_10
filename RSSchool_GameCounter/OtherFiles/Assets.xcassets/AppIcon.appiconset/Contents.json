@@ -1,91 +1,55 @@
 {
   "images" : [
     {
+      "filename" : "imgonline-com-ua-Resize-SW85c9CtCesWVD.jpg",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "20x20"
     },
     {
+      "filename" : "imgonline-com-ua-Resize-ASyypjmrwAwH7.jpg",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "20x20"
     },
     {
+      "filename" : "imgonline-com-ua-Resize-slm7tWRPS08E.jpg",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "29x29"
     },
     {
+      "filename" : "imgonline-com-ua-Resize-FO68Z07RT85C.jpg",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "29x29"
     },
     {
+      "filename" : "imgonline-com-ua-Resize-gg45RD7DDWzZJz.jpg",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "40x40"
     },
     {
+      "filename" : "imgonline-com-ua-Resize-ILXmM9zL0CEIJmoD.jpg",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "40x40"
     },
     {
+      "filename" : "imgonline-com-ua-Resize-THY7l2jGymfuNPP.jpg",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "60x60"
     },
     {
+      "filename" : "imgonline-com-ua-Resize-kZjwktjw5Ahh.jpg",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "60x60"
     },
     {
-      "idiom" : "ipad",
-      "scale" : "1x",
-      "size" : "20x20"
-    },
-    {
-      "idiom" : "ipad",
-      "scale" : "2x",
-      "size" : "20x20"
-    },
-    {
-      "idiom" : "ipad",
-      "scale" : "1x",
-      "size" : "29x29"
-    },
-    {
-      "idiom" : "ipad",
-      "scale" : "2x",
-      "size" : "29x29"
-    },
-    {
-      "idiom" : "ipad",
-      "scale" : "1x",
-      "size" : "40x40"
-    },
-    {
-      "idiom" : "ipad",
-      "scale" : "2x",
-      "size" : "40x40"
-    },
-    {
-      "idiom" : "ipad",
-      "scale" : "1x",
-      "size" : "76x76"
-    },
-    {
-      "idiom" : "ipad",
-      "scale" : "2x",
-      "size" : "76x76"
-    },
-    {
-      "idiom" : "ipad",
-      "scale" : "2x",
-      "size" : "83.5x83.5"
-    },
-    {
+      "filename" : "1024x1024.jpg",
       "idiom" : "ios-marketing",
       "scale" : "1x",
       "size" : "1024x1024"
