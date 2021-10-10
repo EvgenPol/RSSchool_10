@@ -13,6 +13,7 @@ final class NewGameViewController: UIViewController {
     let startButton = StartGameButton.init()
     let containerView = UIView()
     var temporaryPlayersList = [Player]()
+    let cellPlayerID = "player"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +24,7 @@ final class NewGameViewController: UIViewController {
         tableView.dataSource = self
         tableView.backgroundColor = UIColor.clear
         tableView.separatorStyle = .none
-        tableView.register(GameCounterCell.self, forCellReuseIdentifier: "player")
+        tableView.register(GameCounterCell.self, forCellReuseIdentifier: cellPlayerID)
         tableView.isEditing = true
         tableView.showsVerticalScrollIndicator = false
         
@@ -68,6 +69,7 @@ final class NewGameViewController: UIViewController {
         gameCounter.restartGame()
         
         if gameCounter.isGameRun {
+            gameCounter.isGameRestart = true
             dismiss(animated: true, completion: nil)
         } else {
             navigationController?.pushViewController(GameProcessViewController(), animated: true)
@@ -141,10 +143,10 @@ extension NewGameViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell: GameCounterCell
         
-        if let tmpCell = tableView.dequeueReusableCell(withIdentifier: "player") {
+        if let tmpCell = tableView.dequeueReusableCell(withIdentifier: cellPlayerID) {
             cell = tmpCell as! GameCounterCell
         } else {
-            cell = GameCounterCell(style: .value2, reuseIdentifier: "player")
+            cell = GameCounterCell(style: .value2, reuseIdentifier: cellPlayerID)
         }
         
         cell.configureCell()

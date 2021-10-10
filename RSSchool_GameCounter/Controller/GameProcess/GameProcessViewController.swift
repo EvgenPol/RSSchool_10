@@ -153,7 +153,7 @@ extension GameProcessViewController {
                 self.playersCollection.contentOffset.x += self.scrollConstant
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                     self.menuViewController.changeArrowsBlockHide(currentPlayer: self.currentIndexPathPlayer()!.row)
-                    self.menuViewController.pageControl.updateCurentPlayer(self.currentIndexPathPlayer()!.row)
+                    self.menuViewController.pageControl.updateCurrentPlayerIndex(self.currentIndexPathPlayer()!.row)
                     self.gameCounter.updateCurrentPlayer(index: self.currentIndexPathPlayer()!.row) 
                     self.timer.seconds = 0
                 }
@@ -171,7 +171,7 @@ extension GameProcessViewController {
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                     self.menuViewController.changeArrowsBlockHide(currentPlayer: self.currentIndexPathPlayer()!.row)
-                    self.menuViewController.pageControl.updateCurentPlayer(self.currentIndexPathPlayer()!.row)
+                    self.menuViewController.pageControl.updateCurrentPlayerIndex(self.currentIndexPathPlayer()!.row)
                     self.gameCounter.updateCurrentPlayer(index: self.currentIndexPathPlayer()!.row)
                     self.timer.seconds = 0
                 }
@@ -194,7 +194,7 @@ extension GameProcessViewController {
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
                 self.menuViewController.changeArrowsBlockHide(currentPlayer: self.currentIndexPathPlayer()!.row)
-                self.menuViewController.pageControl.updateCurentPlayer(self.currentIndexPathPlayer()!.row)
+                self.menuViewController.pageControl.updateCurrentPlayerIndex(self.currentIndexPathPlayer()!.row)
                 self.gameCounter.updateCurrentPlayer(index: self.currentIndexPathPlayer()!.row)
                 if isNewMove {
                     self.timer.seconds = 0

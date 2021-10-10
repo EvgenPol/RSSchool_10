@@ -36,13 +36,13 @@ final class GameProcessMenuViewController: UIViewController {
         super.viewDidLoad()
         setupButtons()
         createConstraints()
-        pageControl.updateCurentPlayer(gameCounter.currentPlayerIndex)
+        pageControl.updateCurrentPlayerIndex(gameCounter.currentPlayerIndex)
         changeArrowsBlockHide(currentPlayer: gameCounter.currentPlayerIndex)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         pageControl.updatePlayers(namesOfPlayers: closureForPageControl())
-        pageControl.updateCurentPlayer(gameCounter.currentPlayerIndex)
+        pageControl.updateCurrentPlayerIndex(gameCounter.currentPlayerIndex)
         changeArrowsBlockHide(currentPlayer: gameCounter.currentPlayerIndex)
     }
     
@@ -168,9 +168,9 @@ final class GameProcessMenuViewController: UIViewController {
 
 fileprivate extension GameProcessMenuViewController {
     var closureForPageControl: () -> [Character] {{ [weak self] in
-        guard let weakSelf = self else { return [] }
+        guard let self = self else { return [] }
         var names = [Character]()
-        for player in weakSelf.gameCounter.players {
+        for player in self.gameCounter.players {
             guard let letter = player.name.first else { continue }
             names += [letter]
         }

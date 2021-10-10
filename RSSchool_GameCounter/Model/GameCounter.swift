@@ -21,6 +21,7 @@ final class GameCounter {
     var gameTimer: Int
     var currentPlayerIndex: Int
     var moves = [(player: IndexPath, points: Int)]()
+    var isGameRestart = false
     var isGameRun: Bool {
         didSet {
             if let dataIsGameRun = try? jsonEncoder.encode(isGameRun) {
