@@ -9,7 +9,7 @@ import UIKit
 
 final class GameCustomPageControl: UIScrollView {
     private var currentPlayer = 0
-    private var stackNames: UIStackView?
+    private var stackNames = UIStackView(arrangedSubviews: [])
 
     init(namesOfPlayers: [Character]) {
         super.init(frame: .zero)
@@ -27,43 +27,54 @@ final class GameCustomPageControl: UIScrollView {
     private func setupStackNames(_ names: [Character]) {
         var arrayOfLabels = [UILabel]()
         for name in names {
-            let label = UILabel()
-            label.text = "\(name)"
-            label.font = .nunito800(20)
-            label.textAlignment = .center
-            label.textColor = .gameSecondaryBackgroundColor
+            let label = createPlayerLabelWith(name: name)
             arrayOfLabels += [label]
         }
         stackNames = UIStackView(arrangedSubviews: arrayOfLabels)
-        guard let stack = stackNames else { return }
-        addSubview(stack)
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.alignment = .center
-        stack.spacing = 5
+        addSubview(stackNames)
+        stackNames.translatesAutoresizingMaskIntoConstraints = false
+        stackNames.alignment = .center
+        stackNames.spacing = 5
     }
     
     private func setupConstraints() {
-        guard let stack = stackNames else { return }
         NSLayoutConstraint.activate([
-            stack.centerYAnchor.constraint(equalTo: centerYAnchor),
-            stack.centerXAnchor.constraint(equalTo: centerXAnchor),
+            stackNames.centerYAnchor.constraint(equalTo: centerYAnchor),
+            stackNames.centerXAnchor.constraint(equalTo: centerXAnchor),
         ])
     }
     
-    func updateCurentPlayer(_ player: Int) {
-        guard let players = stackNames,
-              let label = players.subviews[player] as? UILabel,
-              let currentPlayerLabel = players.subviews[currentPlayer] as? UILabel else { return }
-        
+    private func createPlayerLabelWith(name: Character) -> UILabel {
+        let label = UILabel()
+        label.text = "\(name)"
+        label.font = .nunito800(20)
+        label.textAlignment = .center
+        label.textColor = .gameSecondaryBackgroundColor
+        return label
+    }
+    
+    func updateCurrentPlayerIndex(_ player: Int) {
+        guard let label = stackNames.subviews[player] as? UILabel,
+              let currentPlayerLabel = stackNames.subviews[currentPlayer] as? UILabel else { return }
         currentPlayerLabel.textColor = .gameSecondaryBackgroundColor
         label.textColor = .gameLetterColor
         currentPlayer = player
     }
     
     func updatePlayers(namesOfPlayers: [Character]) {
-        stackNames?.removeFromSuperview()
-        stackNames = nil
-        setupStackNames(namesOfPlayers)
-        setupConstraints()
+        for i in namesOfPlayers.indices {
+            if i > stackNames.arrangedSubviews.count - 1 {
+                stackNames.addArrangedSubview(createPlayerLabelWith(name: namesOfPlayers[i]))
+            } else {
+                guard let label = stackNames.arrangedSubviews[i] as? UILabel else { fatalError("This View not UILabel") }
+                label.text = "\(namesOfPlayers[i])"
+            }
+        }
+        
+        while stackNames.arrangedSubviews.count > namesOfPlayers.count {
+            let lastIndex = stackNames.arrangedSubviews.count - 1
+            stackNames.removeArrangedSubview(stackNames.arrangedSubviews[lastIndex])
+            stackNames.subviews[lastIndex].removeFromSuperview()
+        }
     }
 }
