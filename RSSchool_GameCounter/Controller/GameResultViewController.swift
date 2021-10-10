@@ -33,10 +33,15 @@ final class GameResultViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if let navigation = navigationController as? NavigationViewController {
-            navigation.headerView.isHidden = true
+        let navigation = navigationController as? NavigationViewController
+        navigation?.headerView.isHidden = true
+        
+        if gameCounter.isGameRestart {
+            navigation?.popToRootViewController(animated: false)
+            gameCounter.isGameRestart = false
+        } else {
+            tableView.reloadData()
         }
-        tableView.reloadData()
     }
     
     private func createTopList() {
