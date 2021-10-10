@@ -7,66 +7,64 @@
 
 import Foundation
 
-class GameCounter {
+final class GameCounter {
+    enum UserDefaultsKeys: String {
+        case isGameRun, players, gameTimer, currentPlayerIndex
+    }
+    
     static let shared = GameCounter()
+    
+    var jsonDecoder = JSONDecoder()
+    var jsonEncoder = JSONEncoder()
+    var userDefaults = UserDefaults.standard
     var players: [Player]
     var gameTimer: Int
-    var currentPlayer: Int
+    var currentPlayerIndex: Int
     var moves = [(player: IndexPath, points: Int)]()
     var isGameRun: Bool {
         didSet {
-            if let dataIsGameRun = try? JSONEncoder().encode(isGameRun) {
-                UserDefaults.standard.setValue(dataIsGameRun, forKey: "isGameRun")
+            if let dataIsGameRun = try? jsonEncoder.encode(isGameRun) {
+                userDefaults.setValue(dataIsGameRun, forKey: UserDefaultsKeys.isGameRun.rawValue)
             }
         }
     }
     
     private init() {
-        if let dataPlayers = UserDefaults.standard.value(forKey: "players") as? Data,
-           let dataTimer = UserDefaults.standard.value(forKey: "gameTimer") as? Data,
-           let dataIsGameRun = UserDefaults.standard.value(forKey: "isGameRun") as? Data,
-           let dataCurrentPlayer = UserDefaults.standard.value(forKey: "currentPlayer") as? Data,
-           
-           let players = try? JSONDecoder().decode([Player].self, from: dataPlayers),
-           let gameTimer = try? JSONDecoder().decode(Int.self, from: dataTimer),
-           let isGameRun = try? JSONDecoder().decode(Bool.self, from: dataIsGameRun),
-           let currentPlayer = try? JSONDecoder().decode(Int.self, from: dataCurrentPlayer)
-        {
-            self.players = players
-            self.gameTimer = gameTimer
-            self.isGameRun = isGameRun
-            self.currentPlayer = currentPlayer
-        } else {
-            players = []
-            gameTimer = 0
-            isGameRun = false
-            currentPlayer = 0
+        gameTimer = userDefaults.integer(forKey: UserDefaultsKeys.gameTimer.rawValue)
+        isGameRun = userDefaults.bool(forKey: UserDefaultsKeys.isGameRun.rawValue)
+        currentPlayerIndex = userDefaults.integer(forKey: UserDefaultsKeys.currentPlayerIndex.rawValue)
         
-            guard let dataPlayers = try? JSONEncoder().encode(players),
-                  let dataTimer = try? JSONEncoder().encode(gameTimer),
-                  
-                  let dataCurrentPlayer = try? JSONEncoder().encode(currentPlayer)
-            else { return }
-
-            UserDefaults.standard.setValue(dataPlayers, forKey: "players")
-            UserDefaults.standard.setValue(dataTimer, forKey: "gameTimer")
-            UserDefaults.standard.setValue(dataCurrentPlayer, forKey: "currentPlayer")
-            UserDefaults.standard.synchronize()
+        if let dataPlayers = userDefaults.value(forKey: UserDefaultsKeys.players.rawValue) as? Data,
+           let players = try? jsonDecoder.decode([Player].self, from: dataPlayers) {
+            self.players = players
+        } else {
+            self.players = []
+            guard let dataPlayers = try? jsonEncoder.encode(players) else {
+                assertionFailure("Error with encode players")
+                return
+            }
+            userDefaults.setValue(dataPlayers, forKey: UserDefaultsKeys.players.rawValue)
+            userDefaults.setValue(gameTimer, forKey: UserDefaultsKeys.gameTimer.rawValue)
+            userDefaults.setValue(currentPlayerIndex, forKey: UserDefaultsKeys.currentPlayerIndex.rawValue)
+            userDefaults.synchronize()
         }
     }
     
     private func updatePlayersUserDefault() {
-        guard let dataPlayers = try? JSONEncoder().encode(players) else { return }
-        UserDefaults.standard.setValue(dataPlayers, forKey: "players")
-        UserDefaults.standard.synchronize()
+        guard let dataPlayers = try? jsonEncoder.encode(players) else {
+            assertionFailure()
+            return
+        }
+        userDefaults.setValue(dataPlayers, forKey: UserDefaultsKeys.players.rawValue)
+        userDefaults.synchronize()
     }
     
-    @objc func addPlayer(with name: String) {
+    func addPlayer(with name: String) {
         players += [Player(name: name)]
         updatePlayersUserDefault()
     }
     
-    @objc func deletePlayer(with index: Int) {
+    func deletePlayer(with index: Int) {
         players.remove(at: index)
         updatePlayersUserDefault()
     }
@@ -84,16 +82,22 @@ class GameCounter {
     
     func updateTimer(new time: Int) {
         gameTimer = time
-        guard let dataTimer = try? JSONEncoder().encode(gameTimer) else { return }
-        UserDefaults.standard.setValue(dataTimer, forKey: "gameTimer")
-        UserDefaults.standard.synchronize()
+        guard let dataTimer = try? jsonEncoder.encode(gameTimer) else {
+            assertionFailure()
+            return
+        }
+        userDefaults.setValue(dataTimer, forKey: UserDefaultsKeys.gameTimer.rawValue)
+        userDefaults.synchronize()
     }
     
-    func updateCurrentPlayer(_ player: Int) {
-        currentPlayer = player
-        guard let dataCurrentPlayer = try? JSONEncoder().encode(currentPlayer) else { return }
-        UserDefaults.standard.setValue(dataCurrentPlayer, forKey: "currentPlayer")
-        UserDefaults.standard.synchronize()
+    func updateCurrentPlayer(index player: Int) {
+        currentPlayerIndex = player
+        guard let dataCurrentPlayer = try? jsonEncoder.encode(currentPlayerIndex) else {
+            assertionFailure()
+            return
+        }
+        userDefaults.setValue(dataCurrentPlayer, forKey: UserDefaultsKeys.currentPlayerIndex.rawValue)
+        userDefaults.synchronize()
     }
     
     func restartGame() {
@@ -102,7 +106,7 @@ class GameCounter {
             players[index].score = 0
         }
         updateTimer(new: 0)
-        updateCurrentPlayer(0)
+        updateCurrentPlayer(index: 0)
         updatePlayersUserDefault()
     }
 }

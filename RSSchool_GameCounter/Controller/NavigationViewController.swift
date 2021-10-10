@@ -8,7 +8,7 @@
 import UIKit
 
 
-class NavigationViewController: UINavigationController {
+final class NavigationViewController: UINavigationController {
     let headerView = GameHeaderView(title: "Game")
     override var preferredStatusBarStyle: UIStatusBarStyle {
         .lightContent

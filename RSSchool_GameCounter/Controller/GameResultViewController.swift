@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GameResultViewController: UIViewController {
+final class GameResultViewController: UIViewController {
     let tableView = UITableView(frame: .zero, style: .grouped)
     let cellSectionOneID = "Top"
     let cellSectionTwoID = "Turns"
@@ -61,23 +61,23 @@ class GameResultViewController: UIViewController {
         tableView.register(GameResultTableCell.self, forCellReuseIdentifier: cellSectionOneID)
         tableView.register(GameResultTableCell.self, forCellReuseIdentifier: cellSectionTwoID)
         tableView.separatorStyle = .none
-        tableView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
-        tableView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
-        tableView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            tableView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
+            tableView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20),
+            tableView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
         
     }
 }
-    // MARK: - Table view data source
 
+// MARK: - Table view data source
 extension GameResultViewController: UITableViewDataSource {
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         gameCounter.moves.isEmpty ? 1 : 2
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(gameCounter.moves.count)
         switch section {
         case 0: return gameCounter.players.count
         case 1: return gameCounter.moves.count
@@ -92,13 +92,13 @@ extension GameResultViewController: UITableViewDataSource {
             cell.setupForTopPlayers()
             
             let mutableString = NSMutableAttributedString(string: "#\(topList[indexPath.row].number) \(sortedPlayers[indexPath.row].name)",
-                                                          attributes: [NSAttributedString.Key.font : UIFont.nunito800(28)] )
+                                                          attributes: [ .font : UIFont.nunito800(28)] )
             
-            mutableString.addAttribute(NSAttributedString.Key.foregroundColor,
+            mutableString.addAttribute(.foregroundColor,
                                        value: UIColor.gameArrowButtonColor,
                                        range: NSRange(location:3, length: mutableString.length - 3))
             
-            mutableString.addAttribute(NSAttributedString.Key.foregroundColor,
+            mutableString.addAttribute(.foregroundColor,
                                        value: UIColor.white,
                                        range: NSRange(location:0, length: 3))
               
@@ -141,10 +141,14 @@ extension GameResultViewController: UITableViewDelegate {
             label.textColor = .gameHeaderLabelTextColor
             label.font = .nunito600(16)
             label.translatesAutoresizingMaskIntoConstraints = false
-            label.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-            label.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 15).isActive = true
-            label.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -15).isActive = true
-            label.heightAnchor.constraint(equalToConstant: 25).isActive = true
+            
+            NSLayoutConstraint.activate([
+                label.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+                label.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 15),
+                label.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -15),
+                label.heightAnchor.constraint(equalToConstant: 25)
+            ])
+            
             return view
         }
         return nil

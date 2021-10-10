@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GameResultTableCell: UITableViewCell {
+final class GameResultTableCell: UITableViewCell {
     let rightLabel = UILabel()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

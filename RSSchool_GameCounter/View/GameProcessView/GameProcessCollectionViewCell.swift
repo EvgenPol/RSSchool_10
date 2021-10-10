@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GameProcessCollectionViewCell: UICollectionViewCell {
+final class GameProcessCollectionViewCell: UICollectionViewCell {
     let nameLabel = UILabel()
     let countLabel = UILabel()
     

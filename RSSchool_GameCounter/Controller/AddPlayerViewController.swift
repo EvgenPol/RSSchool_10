@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddPlayerViewController: UIViewController {
+final class AddPlayerViewController: UIViewController {
     var textField: UITextField!
     let gameCounter = GameCounter.shared
     var playerName = "" {
@@ -20,7 +20,6 @@ class AddPlayerViewController: UIViewController {
         }
     }
 
-    
     override func loadView() {
         super.loadView()
         textField = UITextField()
@@ -76,9 +75,6 @@ class AddPlayerViewController: UIViewController {
     }
 }
     
-
-
-
 //MARK: TextField delegate
 extension AddPlayerViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -88,16 +84,17 @@ extension AddPlayerViewController: UITextFieldDelegate {
         }
         return true
     }
-    
 }
 
 extension NSAttributedString {
     static var forPlaceholder: NSAttributedString {
         let color = UIColor(red: 155/255, green: 155/255, blue: 161/255, alpha: 1)
-        return NSAttributedString(string: "Player name",
-                                  attributes: [
-                                    NSAttributedString.Key.foregroundColor : color,
-                                    NSAttributedString.Key.font : UIFont.nunito800(20)
-                                  ])
+        return NSAttributedString(
+            string: "Player name",
+            attributes: [
+                .foregroundColor: color,
+                .font: UIFont.nunito800(20)
+            ]
+        )
     }
 }

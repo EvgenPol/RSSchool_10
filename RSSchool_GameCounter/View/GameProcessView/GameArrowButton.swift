@@ -11,7 +11,7 @@ enum TypeGameArrowButton {
     case left, right
 }
 
-class GameArrowButton: UIButton {
+final class GameArrowButton: UIButton {
     var layerWithArrowBlock: CAShapeLayer!
     var type: TypeGameArrowButton
 
@@ -19,8 +19,11 @@ class GameArrowButton: UIButton {
         self.type = type
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
-        heightAnchor.constraint(equalToConstant: 30).isActive = true
-        widthAnchor.constraint(equalToConstant: 32).isActive = true
+        NSLayoutConstraint.activate([
+            heightAnchor.constraint(equalToConstant: 30),
+            widthAnchor.constraint(equalToConstant: 32),
+        ])
+        
         
         switch type {
         case .left: buildLeftArrow()
@@ -87,38 +90,38 @@ class GameArrowButton: UIButton {
 fileprivate extension UIBezierPath {
     static var rightArrowhead: UIBezierPath {
         let path = UIBezierPath()
-        path.move(to: CGPoint(x: 15, y: 0))
-        path.addLine(to: CGPoint(x: 30, y: 15))
-        path.addLine(to: CGPoint(x: 15, y: 30))
+        path.move(to: CGPoint(15,0))
+        path.addLine(to: CGPoint(30,15))
+        path.addLine(to: CGPoint(15,30))
         return path
     }
     
     static var rightArrowBlock: UIBezierPath {
         let path = UIBezierPath()
-        path.move(to: CGPoint(x: 33, y: 0))
-        path.addLine(to: CGPoint(x: 33, y: 30))
+        path.move(to: CGPoint(33,0))
+        path.addLine(to: CGPoint(33,30))
         return path
     }
     
     static var leftArrowhead: UIBezierPath {
         let path = UIBezierPath()
-        path.move(to: CGPoint(x: 15, y: 0))
-        path.addLine(to: CGPoint(x: 0, y: 15))
-        path.addLine(to: CGPoint(x: 15, y: 30))
+        path.move(to: CGPoint(15,0))
+        path.addLine(to: CGPoint(0,15))
+        path.addLine(to: CGPoint(15,30))
         return path
     }
     
     static var leftArrowBlock: UIBezierPath {
         let path = UIBezierPath()
-        path.move(to: CGPoint(x: -3, y: 0))
-        path.addLine(to: CGPoint(x: -3, y: 30))
+        path.move(to: CGPoint(-3,0))
+        path.addLine(to: CGPoint(-3,30))
         return path
     }
     
     static var arrowBody: UIBezierPath {
         let path = UIBezierPath()
-        path.move(to: CGPoint(x: 32, y: 15))
-        path.addLine(to: CGPoint(x: 2, y: 15))
+        path.move(to: CGPoint(32,15))
+        path.addLine(to: CGPoint(2,15))
         return path
     }
 }

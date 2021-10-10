@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GameCustomPageControl: UIScrollView {
+final class GameCustomPageControl: UIScrollView {
     private var currentPlayer = 0
     private var stackNames: UIStackView?
 
@@ -17,7 +17,6 @@ class GameCustomPageControl: UIScrollView {
         translatesAutoresizingMaskIntoConstraints = false
         showsHorizontalScrollIndicator = false
         isUserInteractionEnabled = false
-        delegate = self
         setupConstraints()
     }
     
@@ -68,8 +67,3 @@ class GameCustomPageControl: UIScrollView {
         setupConstraints()
     }
 }
-
-extension GameCustomPageControl: UIScrollViewDelegate {
-   //TODO:
-}
- 

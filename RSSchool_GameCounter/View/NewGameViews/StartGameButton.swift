@@ -7,7 +7,7 @@
 
 import UIKit
 
-class StartGameButton: UIButton {
+final class StartGameButton: UIButton {
     private let title = UILabel()
     let viewTitle = UIView()
     var addedMask = false

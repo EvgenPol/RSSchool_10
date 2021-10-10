@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GameHeaderView: UILabel {
+final class GameHeaderView: UILabel {
     var diceButton: DieView? {
         didSet { setupDiceButton() }
     }

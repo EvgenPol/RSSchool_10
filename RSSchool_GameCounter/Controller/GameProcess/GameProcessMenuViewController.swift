@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GameProcessMenuViewController: UIViewController {
+final class GameProcessMenuViewController: UIViewController {
     let gameCounter = GameCounter.shared
     let leftArrow = GameArrowButton(type: .left)
     let rightArrow = GameArrowButton(type: .right)
@@ -36,15 +36,14 @@ class GameProcessMenuViewController: UIViewController {
         super.viewDidLoad()
         setupButtons()
         createConstraints()
-        pageControl.updateCurentPlayer(gameCounter.currentPlayer)
-        changeArrowsBlockHide(currentPlayer: gameCounter.currentPlayer)
+        pageControl.updateCurentPlayer(gameCounter.currentPlayerIndex)
+        changeArrowsBlockHide(currentPlayer: gameCounter.currentPlayerIndex)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         pageControl.updatePlayers(namesOfPlayers: closureForPageControl())
-        pageControl.updateCurentPlayer(gameCounter.currentPlayer)
-        changeArrowsBlockHide(currentPlayer: gameCounter.currentPlayer)
-        print(gameCounter.currentPlayer)
+        pageControl.updateCurentPlayer(gameCounter.currentPlayerIndex)
+        changeArrowsBlockHide(currentPlayer: gameCounter.currentPlayerIndex)
     }
     
     private func setupButtons() {
@@ -102,10 +101,10 @@ class GameProcessMenuViewController: UIViewController {
             }
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { [weak self] in
-                guard let weakSelf = self else { return }
+                guard let self = self else { return }
                 gameProcessVC.nextPlayer()
-                weakSelf.largeScoreButton.isUserInteractionEnabled = true
-                weakSelf.stackButtons.arrangedSubviews.forEach { $0.isUserInteractionEnabled = true }
+                self.largeScoreButton.isUserInteractionEnabled = true
+                self.stackButtons.arrangedSubviews.forEach { $0.isUserInteractionEnabled = true }
             }
         }
     }

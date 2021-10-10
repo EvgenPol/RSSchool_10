@@ -15,9 +15,7 @@ enum GameCounterCellButtonType {
     case add, delete
 }
 
-class GameCounterCellButton: UIButton { }
-
-
+final class GameCounterCellButton: UIButton { }
 
 //MARK: Methods for create left button
 
@@ -25,9 +23,11 @@ extension GameCounterCellButton {
     func createLeftButton(type: GameCounterCellButtonType) -> GameCounterCellButton  {
         translatesAutoresizingMaskIntoConstraints = false
         layer.cornerRadius = 25/2
-        heightAnchor.constraint(equalToConstant: 25).isActive = true
-        widthAnchor.constraint(equalToConstant: 25).isActive = true
-        
+        NSLayoutConstraint.activate([
+            heightAnchor.constraint(equalToConstant: 25),
+            widthAnchor.constraint(equalToConstant: 25),
+        ])
+     
         if type == .delete {
            createMinus()
         } else {
@@ -108,7 +108,6 @@ extension GameCounterCellButton {
             stickOne.leftAnchor.constraint(equalTo: leftAnchor),
             stickOne.rightAnchor.constraint(equalTo: rightAnchor),
             stickOne.bottomAnchor.constraint(equalTo: bottomAnchor),
-
 
             stickTwo.leftAnchor.constraint(equalTo: leftAnchor),
             stickTwo.rightAnchor.constraint(equalTo: rightAnchor),

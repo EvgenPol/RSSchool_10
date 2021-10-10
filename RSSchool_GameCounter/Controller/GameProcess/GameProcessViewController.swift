@@ -7,8 +7,7 @@
 
 import UIKit
 
-class GameProcessViewController: UIViewController, TimerViewDelegate {
-    
+final class GameProcessViewController: UIViewController, TimerViewDelegate {
     let gameCounter = GameCounter.shared
     let playerCellID = "player"
     
@@ -48,7 +47,7 @@ class GameProcessViewController: UIViewController, TimerViewDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         if !alreadyAppearedOnce {
-            scroll(at: gameCounter.currentPlayer, direction: .right, isNewMove: false)
+            scroll(at: gameCounter.currentPlayerIndex, direction: .right, isNewMove: false)
             alreadyAppearedOnce = true
         }
         let timer = gameCounter.gameTimer
@@ -83,7 +82,9 @@ class GameProcessViewController: UIViewController, TimerViewDelegate {
             return
         }
         layout.scrollDirection = .horizontal
-        layout.itemSize = .init(width: widthScreen/1.47, height: heightScreen/2.7)
+        let width = UIScreen.main.bounds.width
+        let height = UIScreen.main.bounds.height
+        layout.itemSize = .init(width: width / 1.47, height: height / 2.7)
         layout.sectionInset = .init(top: 0, left: 60, bottom: 0, right: 60)
         layout.minimumLineSpacing = 20
     }
@@ -112,7 +113,7 @@ class GameProcessViewController: UIViewController, TimerViewDelegate {
             playersCollection.leftAnchor.constraint(equalTo: view.leftAnchor),
             playersCollection.topAnchor.constraint(equalTo: timer.bottomAnchor, constant: 5),
             playersCollection.rightAnchor.constraint(equalTo: view.rightAnchor),
-            playersCollection.heightAnchor.constraint(equalToConstant: heightScreen/2.6),
+            playersCollection.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height/2.6),
             
             menuViewController.view.leftAnchor.constraint(equalTo: view.leftAnchor),
             menuViewController.view.topAnchor.constraint(equalTo: playersCollection.bottomAnchor, constant: 28),
@@ -140,7 +141,7 @@ extension GameProcessViewController: UICollectionViewDelegate, UICollectionViewD
 //MARK: Extension for work with scroll in CollectionView
 extension GameProcessViewController {
     var scrollConstant: CGFloat {
-        widthScreen/1.47 + 19
+        UIScreen.main.bounds.width / 1.47 + 19
     }
     
     @objc func scrollRight() {
@@ -148,13 +149,13 @@ extension GameProcessViewController {
            currentPlayer.row < gameCounter.players.count - 1 {
             
             UIView.animate(withDuration: 0.2) { [weak self] in
-                guard let weakSelf = self else { return }
-                weakSelf.playersCollection.contentOffset.x += weakSelf.scrollConstant
+                guard let self = self else { return }
+                self.playersCollection.contentOffset.x += self.scrollConstant
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                    weakSelf.menuViewController.changeArrowsBlockHide(currentPlayer: weakSelf.currentIndexPathPlayer()!.row)
-                    weakSelf.menuViewController.pageControl.updateCurentPlayer(weakSelf.currentIndexPathPlayer()!.row)
-                    weakSelf.gameCounter.updateCurrentPlayer(weakSelf.currentIndexPathPlayer()!.row) 
-                    weakSelf.timer.seconds = 0
+                    self.menuViewController.changeArrowsBlockHide(currentPlayer: self.currentIndexPathPlayer()!.row)
+                    self.menuViewController.pageControl.updateCurentPlayer(self.currentIndexPathPlayer()!.row)
+                    self.gameCounter.updateCurrentPlayer(index: self.currentIndexPathPlayer()!.row) 
+                    self.timer.seconds = 0
                 }
             }
         }
@@ -165,14 +166,14 @@ extension GameProcessViewController {
            currentPlayer.row > 0 {
         
             UIView.animate(withDuration: 0.2) { [weak self] in
-                guard let weakSelf = self else { return }
-                weakSelf.playersCollection.contentOffset.x -= weakSelf.scrollConstant
+                guard let self = self else { return }
+                self.playersCollection.contentOffset.x -= self.scrollConstant
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                    weakSelf.menuViewController.changeArrowsBlockHide(currentPlayer: weakSelf.currentIndexPathPlayer()!.row)
-                    weakSelf.menuViewController.pageControl.updateCurentPlayer(weakSelf.currentIndexPathPlayer()!.row)
-                    weakSelf.gameCounter.updateCurrentPlayer(weakSelf.currentIndexPathPlayer()!.row)
-                    weakSelf.timer.seconds = 0
+                    self.menuViewController.changeArrowsBlockHide(currentPlayer: self.currentIndexPathPlayer()!.row)
+                    self.menuViewController.pageControl.updateCurentPlayer(self.currentIndexPathPlayer()!.row)
+                    self.gameCounter.updateCurrentPlayer(index: self.currentIndexPathPlayer()!.row)
+                    self.timer.seconds = 0
                 }
             }
         }
@@ -183,20 +184,20 @@ extension GameProcessViewController {
         cons *= CGFloat(index)
         
         UIView.animate(withDuration: 0.2) { [weak self] in
-            guard let weakSelf = self else { return }
+            guard let self = self else { return }
             
             if direction == .left {
-                weakSelf.playersCollection.contentOffset.x -= cons
+                self.playersCollection.contentOffset.x -= cons
             } else {
-                weakSelf.playersCollection.contentOffset.x += cons
+                self.playersCollection.contentOffset.x += cons
             }
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                weakSelf.menuViewController.changeArrowsBlockHide(currentPlayer: weakSelf.currentIndexPathPlayer()!.row)
-                weakSelf.menuViewController.pageControl.updateCurentPlayer(weakSelf.currentIndexPathPlayer()!.row)
-                weakSelf.gameCounter.updateCurrentPlayer(weakSelf.currentIndexPathPlayer()!.row)
+                self.menuViewController.changeArrowsBlockHide(currentPlayer: self.currentIndexPathPlayer()!.row)
+                self.menuViewController.pageControl.updateCurentPlayer(self.currentIndexPathPlayer()!.row)
+                self.gameCounter.updateCurrentPlayer(index: self.currentIndexPathPlayer()!.row)
                 if isNewMove {
-                    weakSelf.timer.seconds = 0
+                    self.timer.seconds = 0
                 }
             }
         }
@@ -204,26 +205,13 @@ extension GameProcessViewController {
     
     func nextPlayer() {
             UIView.animate(withDuration: 0.2) { [weak self] in
-                guard let weakSelf = self else { return }
-                let countPlayers = weakSelf.gameCounter.players.count - 1
-                if weakSelf.currentIndexPathPlayer()!.row >= countPlayers {
-                    weakSelf.scroll(at: countPlayers, direction: .left, isNewMove: true)
+                guard let self = self else { return }
+                let countPlayers = self.gameCounter.players.count - 1
+                if self.currentIndexPathPlayer()!.row >= countPlayers {
+                    self.scroll(at: countPlayers, direction: .left, isNewMove: true)
                 } else {
-                    weakSelf.scrollRight()
+                    self.scrollRight()
             }
-        }
-    }
-}
-
-extension Array where Element == BasisDice {
-    func dice(face: FaceOfDice) -> BasisDice {
-        switch face {
-        case .one: return self[0]
-        case .two: return self[1]
-        case .three: return self[2]
-        case .four: return self[3]
-        case .five: return self[4]
-        case .six: return self[5]
         }
     }
 }

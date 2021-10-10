@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GameCounterCell: UITableViewCell {
+final class GameCounterCell: UITableViewCell {
     var leftButton: GameCounterCellButton!
     let title = UILabel()
     private let separator = UIView()
@@ -44,8 +44,6 @@ class GameCounterCell: UITableViewCell {
             separator.bottomAnchor.constraint(equalTo: bottomAnchor),
             separator.heightAnchor.constraint(equalToConstant: 1),
         ])
-        
-        
     }
 }
 

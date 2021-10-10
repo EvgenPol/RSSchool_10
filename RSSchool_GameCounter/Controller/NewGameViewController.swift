@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NewGameViewController: UIViewController {
+final class NewGameViewController: UIViewController {
     let gameCounter = GameCounter.shared
     let tableView = UITableView(frame: .zero, style: .grouped)
     let startButton = StartGameButton.init()
@@ -166,10 +166,13 @@ extension NewGameViewController: UITableViewDataSource {
         label.font = .nunito600(16)
         label.textColor = .gameHeaderLabelTextColor
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.topAnchor.constraint(equalTo: view.topAnchor,constant: 15).isActive = true
-        label.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 15).isActive = true
-        label.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -15).isActive = true
-        label.heightAnchor.constraint(equalToConstant: 25).isActive = true
+        NSLayoutConstraint.activate([
+            label.topAnchor.constraint(equalTo: view.topAnchor,constant: 15),
+            label.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 15),
+            label.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -15),
+            label.heightAnchor.constraint(equalToConstant: 25)
+        ])
+        
         view.roundCorners(corners: [.layerMaxXMinYCorner, .layerMinXMinYCorner], radius: 15)
         view.backgroundColor = .gameSecondaryBackgroundColor
         return view

@@ -7,11 +7,11 @@
 
 import UIKit
 
-@objc protocol TimerViewDelegate {
+@objc protocol TimerViewDelegate: AnyObject {
     func updateTimer(new time: Int)
 }
 
-class GameTimerView: UIView {
+final class GameTimerView: UIView {
     let timerLabel = UILabel()
     let playButton = UIButton()
     var playButtonLayer: CAShapeLayer!
@@ -24,7 +24,7 @@ class GameTimerView: UIView {
     }
     
     var timer: Timer?
-    var delegate: TimerViewDelegate?
+    weak var delegate: TimerViewDelegate?
 
     private func setupTimerLabel() {
         timerLabel.text = "00:00"
@@ -64,9 +64,9 @@ class GameTimerView: UIView {
             playButton.setTitle("‖", for: .normal)
             playButtonLayer.isHidden = true
             timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
-                guard let weakSelf = self else { return }
-                weakSelf.seconds += 1
-                weakSelf.delegate?.updateTimer(new: weakSelf.seconds)
+                guard let self = self else { return }
+                self.seconds += 1
+                self.delegate?.updateTimer(new: self.seconds)
             }
         }
     }
@@ -115,9 +115,9 @@ extension GameTimerView {
 fileprivate extension UIBezierPath {
     static var runButtonPath: UIBezierPath {
         let path = UIBezierPath()
-        path.move(to: CGPoint(x: 0, y: 0))
-        path.addLine(to: CGPoint(x: 0, y: 20))
-        path.addLine(to: CGPoint(x: 17, y: 10))
+        path.move(to: CGPoint(0,0))
+        path.addLine(to: CGPoint(0,20))
+        path.addLine(to: CGPoint(17,10))
         path.close()
         return path
     }

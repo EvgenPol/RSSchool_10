@@ -11,7 +11,7 @@ enum SizeGameScoreButton {
     case large, standard
 }
 
-class GameScoreButton: UIButton {
+final class GameScoreButton: UIButton {
     private let scoreLabel = UILabel()
     var score: Int?
 

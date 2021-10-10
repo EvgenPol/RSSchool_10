@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NewGameAddFooter: UIButton {
+final class NewGameAddFooter: UIButton {
     let leftButton = GameCounterCellButton().createLeftButton(type: .add)
     let title = UILabel()
 
