@@ -28,12 +28,10 @@ final class NewGameViewController: UIViewController {
         tableView.isEditing = true
         tableView.showsVerticalScrollIndicator = false
         
-        
         if let navigationVC = navigationController as? NavigationViewController {
             navigationVC.configureNewGameViewController(self, isGameRun: gameCounter.isGameRun)
         }
-        
-        addConsTable()
+        addConstraintsTable()
     }
     
     override func loadView() {
@@ -78,7 +76,7 @@ final class NewGameViewController: UIViewController {
         }
     }
     
-    private func addConsTable() {
+    private func addConstraintsTable() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         startButton.translatesAutoresizingMaskIntoConstraints = false
         containerView.translatesAutoresizingMaskIntoConstraints = false
@@ -152,7 +150,7 @@ extension NewGameViewController: UITableViewDataSource {
         cell.configureCell()
         cell.title.text = gameCounter.players[indexPath.row].name
         cell.leftButton.addTarget(self, action: #selector(deletePlayer), for: .touchUpInside)
-        
+
         cell.leftButton.tag = indexPath.row
         cell.backgroundColor = UIColor(red: 59/255, green:  59/255, blue:  59/255, alpha: 1)
         cell.selectionStyle = .none

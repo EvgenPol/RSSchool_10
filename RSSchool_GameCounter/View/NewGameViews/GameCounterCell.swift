@@ -15,7 +15,7 @@ final class GameCounterCell: UITableViewCell {
     func configureCell() {
         configureDefaultCell()
         backgroundColor = .gameSecondaryBackgroundColor
-        addCons()
+        addConstraints()
     }
     
     private func configureDefaultCell() {
@@ -29,7 +29,7 @@ final class GameCounterCell: UITableViewCell {
         addSubview(separator)
     }
     
-    private func addCons() {
+    private func addConstraints() {
         title.translatesAutoresizingMaskIntoConstraints = false
      
         NSLayoutConstraint.activate([

@@ -18,7 +18,6 @@ enum GameCounterCellButtonType {
 final class GameCounterCellButton: UIButton { }
 
 //MARK: Methods for create left button
-
 extension GameCounterCellButton {
     func createLeftButton(type: GameCounterCellButtonType) -> GameCounterCellButton  {
         translatesAutoresizingMaskIntoConstraints = false
@@ -81,7 +80,6 @@ extension GameCounterCellButton {
 
 
 //MARK: methods for create right button
-
 extension GameCounterCellButton {
      func createRightButton() -> GameCounterCellButton {
         translatesAutoresizingMaskIntoConstraints = false
