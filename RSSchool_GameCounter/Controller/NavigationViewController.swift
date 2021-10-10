@@ -15,11 +15,9 @@ class NavigationViewController: UINavigationController {
         super.viewDidLoad()
         navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always
-       
-        navigationBar.largeTitleTextAttributes = NSAttributedString.atrributesForNavigationLargeTitle
-    
-        navigationBar.titleTextAttributes = NSAttributedString.atrributesForNavigationTitle
         
+        navigationBar.largeTitleTextAttributes = NSAttributedString.atrributesForNavigationLargeTitle
+        navigationBar.titleTextAttributes = NSAttributedString.atrributesForNavigationTitle
         navigationBar.barTintColor = UIColor.gameMainBackgroundColor
         
         UIBarButtonItem.appearance().setTitleTextAttributes(
@@ -74,7 +72,9 @@ class NavigationViewController: UINavigationController {
         gameProcessVC.navigationItem.largeTitleDisplayMode = .always
         
         navigationBar.addSubview(headerView)
-        headerView.diceButton = DiceFour(size: .mini)
+        let die = DieView.dieMini
+        die.faceDie = .four
+        headerView.diceButton = die
         headerView.diceButton?.addTarget(self, action: #selector(pushRollViewController), for: .touchUpInside)
     
         NSLayoutConstraint.activate([

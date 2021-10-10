@@ -8,7 +8,7 @@
 import UIKit
 
 class GameHeaderView: UILabel {
-    var diceButton: BasisDice? {
+    var diceButton: DieView? {
         didSet { setupDiceButton() }
     }
     
@@ -28,7 +28,10 @@ class GameHeaderView: UILabel {
     private func setupDiceButton() {
         guard let dice = diceButton else { return }
         addSubview(dice)
-        dice.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        dice.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            dice.centerYAnchor.constraint(equalTo: centerYAnchor),
+            dice.rightAnchor.constraint(equalTo: rightAnchor),
+        ])
+       
     }
 }

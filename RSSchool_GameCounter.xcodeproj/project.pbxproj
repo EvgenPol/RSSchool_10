@@ -12,13 +12,7 @@
 		6C11E67826D791DD006C57FF /* FontAndColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11E67726D791DD006C57FF /* FontAndColor.swift */; };
 		6C11E67A26D7F727006C57FF /* AttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11E67926D7F727006C57FF /* AttributedString.swift */; };
 		6C11E67C26D80322006C57FF /* GameProcessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11E67B26D80322006C57FF /* GameProcessViewController.swift */; };
-		6C11E67F26D81C92006C57FF /* BasisDice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11E67E26D81C92006C57FF /* BasisDice.swift */; };
-		6C11E68126D824EF006C57FF /* DiceOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11E68026D824EF006C57FF /* DiceOne.swift */; };
-		6C11E68326D82621006C57FF /* DiceTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11E68226D82621006C57FF /* DiceTwo.swift */; };
-		6C11E68526D828C5006C57FF /* DiceThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11E68426D828C5006C57FF /* DiceThree.swift */; };
-		6C11E68726D8299A006C57FF /* DiceFour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11E68626D8299A006C57FF /* DiceFour.swift */; };
-		6C11E68926D82A57006C57FF /* DiceFive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11E68826D82A57006C57FF /* DiceFive.swift */; };
-		6C11E68B26D82B09006C57FF /* DiceSix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11E68A26D82B09006C57FF /* DiceSix.swift */; };
+		6C11E67F26D81C92006C57FF /* DieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11E67E26D81C92006C57FF /* DieView.swift */; };
 		6C11E68D26D83404006C57FF /* GameTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11E68C26D83404006C57FF /* GameTimerView.swift */; };
 		6C11E6BC26DA27E3006C57FF /* GameHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11E6BB26DA27E3006C57FF /* GameHeaderView.swift */; };
 		6C11E6C126DA6AC5006C57FF /* GameProcessCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11E6C026DA6AC5006C57FF /* GameProcessCollectionViewCell.swift */; };
@@ -52,13 +46,7 @@
 		6C11E67726D791DD006C57FF /* FontAndColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontAndColor.swift; sourceTree = "<group>"; };
 		6C11E67926D7F727006C57FF /* AttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributedString.swift; sourceTree = "<group>"; };
 		6C11E67B26D80322006C57FF /* GameProcessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameProcessViewController.swift; sourceTree = "<group>"; };
-		6C11E67E26D81C92006C57FF /* BasisDice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasisDice.swift; sourceTree = "<group>"; };
-		6C11E68026D824EF006C57FF /* DiceOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceOne.swift; sourceTree = "<group>"; };
-		6C11E68226D82621006C57FF /* DiceTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceTwo.swift; sourceTree = "<group>"; };
-		6C11E68426D828C5006C57FF /* DiceThree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceThree.swift; sourceTree = "<group>"; };
-		6C11E68626D8299A006C57FF /* DiceFour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceFour.swift; sourceTree = "<group>"; };
-		6C11E68826D82A57006C57FF /* DiceFive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceFive.swift; sourceTree = "<group>"; };
-		6C11E68A26D82B09006C57FF /* DiceSix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceSix.swift; sourceTree = "<group>"; };
+		6C11E67E26D81C92006C57FF /* DieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DieView.swift; sourceTree = "<group>"; };
 		6C11E68C26D83404006C57FF /* GameTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTimerView.swift; sourceTree = "<group>"; };
 		6C11E6BB26DA27E3006C57FF /* GameHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHeaderView.swift; sourceTree = "<group>"; };
 		6C11E6C026DA6AC5006C57FF /* GameProcessCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameProcessCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -104,8 +92,8 @@
 			children = (
 				6C11E6D926DC6478006C57FF /* ExtensionForDefaultClasses */,
 				6C11E6BF26DA69E5006C57FF /* GameProcessView */,
-				6C11E67D26D81C4B006C57FF /* Dices */,
 				6C11E67126D7896B006C57FF /* NewGameViews */,
+				6C11E67E26D81C92006C57FF /* DieView.swift */,
 				6C11E6D526DC314A006C57FF /* GameResultTableCell.swift */,
 			);
 			path = View;
@@ -154,20 +142,6 @@
 				6C86E5F126D5AF1800B6E3E3 /* LaunchScreen.storyboard */,
 			);
 			path = OtherFiles;
-			sourceTree = "<group>";
-		};
-		6C11E67D26D81C4B006C57FF /* Dices */ = {
-			isa = PBXGroup;
-			children = (
-				6C11E67E26D81C92006C57FF /* BasisDice.swift */,
-				6C11E68026D824EF006C57FF /* DiceOne.swift */,
-				6C11E68226D82621006C57FF /* DiceTwo.swift */,
-				6C11E68426D828C5006C57FF /* DiceThree.swift */,
-				6C11E68626D8299A006C57FF /* DiceFour.swift */,
-				6C11E68826D82A57006C57FF /* DiceFive.swift */,
-				6C11E68A26D82B09006C57FF /* DiceSix.swift */,
-			);
-			path = Dices;
 			sourceTree = "<group>";
 		};
 		6C11E6BF26DA69E5006C57FF /* GameProcessView */ = {
@@ -313,19 +287,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				6CC5DCE426D6A1FB006CA8DF /* GameCounterCell.swift in Sources */,
-				6C11E68726D8299A006C57FF /* DiceFour.swift in Sources */,
-				6C11E68126D824EF006C57FF /* DiceOne.swift in Sources */,
 				6C11E67A26D7F727006C57FF /* AttributedString.swift in Sources */,
 				6CC5DCE626D6AE4B006CA8DF /* GameCounterCellButton.swift in Sources */,
 				6C11E6D826DC6436006C57FF /* RoundCornersView.swift in Sources */,
 				6C11E67826D791DD006C57FF /* FontAndColor.swift in Sources */,
-				6C11E68926D82A57006C57FF /* DiceFive.swift in Sources */,
 				6C02348926D6345300770FCB /* NavigationViewController.swift in Sources */,
 				6C86E5EB26D5AF1100B6E3E3 /* NewGameViewController.swift in Sources */,
 				6C11E6CB26DB9ADF006C57FF /* GameRollViewController.swift in Sources */,
-				6C11E68526D828C5006C57FF /* DiceThree.swift in Sources */,
 				6C11E68D26D83404006C57FF /* GameTimerView.swift in Sources */,
-				6C11E67F26D81C92006C57FF /* BasisDice.swift in Sources */,
+				6C11E67F26D81C92006C57FF /* DieView.swift in Sources */,
 				6C11E67C26D80322006C57FF /* GameProcessViewController.swift in Sources */,
 				6C11E67626D78B6F006C57FF /* AddPlayerViewController.swift in Sources */,
 				6CC5DCEA26D6ED79006CA8DF /* StartGameButton.swift in Sources */,
@@ -335,7 +305,6 @@
 				6C11E6D626DC314A006C57FF /* GameResultTableCell.swift in Sources */,
 				6C11E6C126DA6AC5006C57FF /* GameProcessCollectionViewCell.swift in Sources */,
 				6C11E6CF26DBE68E006C57FF /* GameUndoButton.swift in Sources */,
-				6C11E68B26D82B09006C57FF /* DiceSix.swift in Sources */,
 				6C11E6C726DA9657006C57FF /* GameScoreButton.swift in Sources */,
 				6C11E6BC26DA27E3006C57FF /* GameHeaderView.swift in Sources */,
 				6C11E6DB26DC65CE006C57FF /* NewGameAddButton.swift in Sources */,
@@ -343,7 +312,6 @@
 				6C11E6C926DA9E25006C57FF /* GameArrowButton.swift in Sources */,
 				6CC5DCDB26D6645C006CA8DF /* Player.swift in Sources */,
 				6C86E5E726D5AF1100B6E3E3 /* AppDelegate.swift in Sources */,
-				6C11E68326D82621006C57FF /* DiceTwo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
