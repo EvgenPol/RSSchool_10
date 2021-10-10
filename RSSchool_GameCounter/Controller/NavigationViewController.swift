@@ -10,6 +10,9 @@ import UIKit
 
 class NavigationViewController: UINavigationController {
     let headerView = GameHeaderView(title: "Game")
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        .lightContent
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
