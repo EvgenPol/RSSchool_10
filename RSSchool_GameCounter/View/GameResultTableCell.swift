@@ -19,6 +19,7 @@ class GameResultTableCell: UITableViewCell {
         rightLabel.textColor = .white
         rightLabel.translatesAutoresizingMaskIntoConstraints = false
         rightLabel.textAlignment = .right
+        selectionStyle = .none
         createConstraints()
     }
     
@@ -29,18 +30,16 @@ class GameResultTableCell: UITableViewCell {
     func setupForTopPlayers() {
         backgroundColor = .clear
         rightLabel.font = .nunito800(28)
-        
-        textLabel?.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-        textLabel?.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        textLabel?.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        guard let textLabel = textLabel else { return }
+        NSLayoutConstraint.activate([
+            textLabel.leftAnchor.constraint(equalTo: leftAnchor),
+            textLabel.topAnchor.constraint(equalTo: topAnchor),
+            textLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
     }
     
     func setuForTurnsPlayers() {
         backgroundColor = .gameSecondaryBackgroundColor
-        
-        textLabel?.leftAnchor.constraint(equalTo: layoutMarginsGuide.leftAnchor, constant: -1).isActive = true
-        textLabel?.heightAnchor.constraint(equalToConstant: 45).isActive = true
-        textLabel?.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         
         textLabel?.textColor = .white
         textLabel?.font = .nunito800(24)
@@ -48,13 +47,18 @@ class GameResultTableCell: UITableViewCell {
         
         let separator = UIView()
         addSubview(separator)
+        guard let textLabel = textLabel else { return }
         separator.backgroundColor = .gameSeparatorCellColor
         separator.translatesAutoresizingMaskIntoConstraints = false
-        separator.heightAnchor.constraint(equalToConstant: 1).isActive = true
-        separator.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        separator.rightAnchor.constraint(equalTo: rightAnchor) .isActive = true
-        separator.leftAnchor.constraint(equalTo: leftAnchor, constant: 16) .isActive = true
-        
+        NSLayoutConstraint.activate([
+            textLabel.leftAnchor.constraint(equalTo: layoutMarginsGuide.leftAnchor, constant: -1),
+            textLabel.heightAnchor.constraint(equalToConstant: 45),
+            textLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+            separator.heightAnchor.constraint(equalToConstant: 1),
+            separator.bottomAnchor.constraint(equalTo: bottomAnchor),
+            separator.rightAnchor.constraint(equalTo: rightAnchor),
+            separator.leftAnchor.constraint(equalTo: leftAnchor, constant: 16)
+        ])
     }
     
     private func createConstraints() {
